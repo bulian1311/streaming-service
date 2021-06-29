@@ -1,5 +1,5 @@
 const userService = require('../services/user.service');
-const { validationResult } = require('express-validator')
+const { validationResult } = require('express-validator');
 
 const ApiError = require('../errors/api.error');
 
@@ -8,7 +8,7 @@ class UserController {
     try {
       const errors = validationResult(req);
 
-      if(!errors.isEmpty()) {
+      if (!errors.isEmpty()) {
         return next(ApiError.BadRequest('Ошибка валидации', errors.array()));
       }
 

@@ -4,7 +4,6 @@ const { body } = require('express-validator');
 const authMidleware = require('../middlewares/auth.middleware');
 const userController = require('../controllers/user.controller');
 
-
 const router = new express.Router();
 
 router.get('/', (req, res) => {

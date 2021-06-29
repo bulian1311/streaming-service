@@ -54,15 +54,15 @@ class UserService {
   }
 
   async login(email, password) {
-    const user = await UserModel.findOne({email});
+    const user = await UserModel.findOne({ email });
 
-    if(!user) {
+    if (!user) {
       throw ApiError.BadRequest('Не верный логин или пароль.');
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
-    if(!isPasswordValid) {
+    if (!isPasswordValid) {
       throw ApiError.BadRequest('Не верный логин или пароль.');
     }
 
@@ -82,14 +82,14 @@ class UserService {
   }
 
   async refresh(refreshToken) {
-    if(!refreshToken) {
+    if (!refreshToken) {
       throw ApiError.UnauthorizedError();
     }
 
     const userData = tokenService.validateRefreshToken(refreshToken);
     const tokenFromDb = await tokenService.findToken(refreshToken);
 
-    if(!userData || !tokenFromDb) {
+    if (!userData || !tokenFromDb) {
       throw ApiError.UnauthorizedError();
     }
 
