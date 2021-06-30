@@ -14,7 +14,10 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: process.env.CLIENT_URL
+}));
 // app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
 app.use('/api', router);
 app.use(errorMiddleware);
