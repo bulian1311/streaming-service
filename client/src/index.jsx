@@ -3,15 +3,15 @@ import ReactDOM from "react-dom";
 import App from "./app/app.component";
 import reportWebVitals from "./reportWebVitals";
 
-import Store from './store/store';
+import Store from "./store/store";
 
 const store = new Store();
 
-export const Context = React.createContext({store});
+export const Context = React.createContext({ store });
 
 ReactDOM.render(
   <React.StrictMode>
-    <Context.Provider value={{store}}>
+    <Context.Provider value={{ store }}>
       <App />
     </Context.Provider>
   </React.StrictMode>,

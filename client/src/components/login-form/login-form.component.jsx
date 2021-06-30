@@ -22,7 +22,9 @@ export const LoginForm = () => {
         value={password}
       />
       <button onClick={() => store.login(email, password)}>Login</button>
-      <button onClick={() => store.registration(email, password)}>Register</button>
+      <button onClick={() => store.registration(email, password)}>
+        Register
+      </button>
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable } from "mobx";
 
-import AuthService from '../services/auth.service'
-import axios from 'axios'
-import { API_URL } from '../http';
+import AuthService from "../services/auth.service";
+import axios from "axios";
+import { API_URL } from "../http";
 
 export default class Store {
   user = null;
@@ -26,7 +26,7 @@ export default class Store {
 
       console.log(res);
 
-      localStorage.setItem('token', res.data.accessToken);
+      localStorage.setItem("token", res.data.accessToken);
       this.setAuth(true);
       this.setUser(res.data.user);
     } catch (err) {
@@ -38,9 +38,9 @@ export default class Store {
     try {
       const res = await AuthService.registration(email, password);
 
-      console.log(res)
+      console.log(res);
 
-      localStorage.setItem('token', res.data.accessToken);
+      localStorage.setItem("token", res.data.accessToken);
       this.setAuth(true);
       this.setUser(res.data.user);
     } catch (err) {
@@ -51,7 +51,7 @@ export default class Store {
   async logout() {
     try {
       await AuthService.logout();
-      localStorage.removeItem('token');
+      localStorage.removeItem("token");
       this.setAuth(false);
       this.setUser(null);
     } catch (err) {
@@ -61,11 +61,13 @@ export default class Store {
 
   async checkAuth() {
     try {
-      const res = await axios.get(`${API_URL}/refresh`, {withCredentials: true});
+      const res = await axios.get(`${API_URL}/refresh`, {
+        withCredentials: true,
+      });
 
       console.log(res);
 
-      localStorage.setItem('token', res.data.accessToken);
+      localStorage.setItem("token", res.data.accessToken);
       this.setAuth(true);
       this.setUser(res.data.user);
     } catch (err) {

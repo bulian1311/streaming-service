@@ -12,22 +12,31 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-api.interceptors.response.use(config => config, async (error) => {
-  const originalRequest = error.config;
-  
-  if(error.response.status == 401 && error.config && !error.config._isRetry) {
-    originalRequest._isRetry = true;
+api.interceptors.response.use(
+  (config) => config,
+  async (error) => {
+    const originalRequest = error.config;
 
-    try {
-      const res = await axios.get(`${API_URL}/refresh`, {withCredentials: true});
-      localStorage.setItem('token', res.data.accessToken);
-      return api.request(originalRequest);
-    } catch (err) {
-      console.log(err.message);
+    if (
+      error.response.status == 401 &&
+      error.config &&
+      !error.config._isRetry
+    ) {
+      originalRequest._isRetry = true;
+
+      try {
+        const res = await axios.get(`${API_URL}/refresh`, {
+          withCredentials: true,
+        });
+        localStorage.setItem("token", res.data.accessToken);
+        return api.request(originalRequest);
+      } catch (err) {
+        console.log(err.message);
+      }
     }
-  }
 
-  throw error;
-});
+    throw error;
+  }
+);
 
 export default api;
