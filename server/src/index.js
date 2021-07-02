@@ -8,29 +8,40 @@ const mongoose = require('mongoose');
 const errorMiddleware = require('./middlewares/error.midleware');
 const router = require('./router');
 
+const node_media_server = require('./media_server');
+
 const { PORT = 4000 } = process.env;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  credentials: true,
-  origin: process.env.CLIENT_URL
-}));
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL,
+  }),
+);
 // app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
 app.use('/api', router);
+
 app.use(errorMiddleware);
 
 const start = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL, {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(
+      process.env.MONGO_URL,
+      {
+        useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      },
+      () => console.log('Mongo connection success.'),
+    );
 
     app.listen(PORT, () => console.log(`App listening on ${PORT}!`));
+
+    node_media_server.run();
   } catch (err) {
     console.error(err.message);
   }

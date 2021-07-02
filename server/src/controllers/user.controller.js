@@ -87,6 +87,14 @@ class UserController {
       next(err);
     }
   }
+
+  async getUser(req, res, next) {
+    try {
+      
+    } catch (err) {
+      
+    }
+  }
 }
 
 module.exports = new UserController();

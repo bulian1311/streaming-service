@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const uuid = require('uuid');
+const { nanoid } = require('nanoid');
 
 const UserModel = require('../models/user.model');
 const mailService = require('../services/mail.service');
@@ -18,12 +18,14 @@ class UserService {
     }
 
     const hashPassword = await bcrypt.hash(password, 3);
-    const activationLink = uuid.v4();
+    const activationLink = nanoid();
+    const streamKey = nanoid();
 
     const user = await UserModel.create({
       email,
       password: hashPassword,
       activationLink,
+      streamKey
     });
 
     await mailService.sendActivationMail(
