@@ -1,4 +1,4 @@
-module.exports = class UserDto {
+export default class UserDto {
   email;
   id;
   isActivated;
@@ -8,6 +8,6 @@ module.exports = class UserDto {
     this.email = model.email;
     this.id = model._id;
     this.isActivated = model.isActivated;
-    this.streamKey = model.streamKey
+    this.streamKey = model.streamKey;
   }
-};
+}

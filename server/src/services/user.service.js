@@ -1,11 +1,11 @@
-const bcrypt = require('bcrypt');
-const { nanoid } = require('nanoid');
+import bcrypt from 'bcrypt';
+import { nanoid } from 'nanoid';
 
-const UserModel = require('../models/user.model');
-const mailService = require('../services/mail.service');
-const tokenService = require('../services/token.service');
-const UserDto = require('../dtos/user.dto');
-const ApiError = require('../errors/api.error');
+import UserModel from '../models/user.model.js';
+import mailService from '../services/mail.service.js';
+import tokenService from '../services/token.service.js';
+import UserDto from '../dtos/user.dto.js';
+import ApiError from '../errors/api.error.js';
 
 class UserService {
   async registration(email, password) {
@@ -25,7 +25,7 @@ class UserService {
       email,
       password: hashPassword,
       activationLink,
-      streamKey
+      streamKey,
     });
 
     await mailService.sendActivationMail(
@@ -111,6 +111,11 @@ class UserService {
     const users = await UserModel.find();
     return users;
   }
+
+  async getUserByEmail(email) {
+    const user = await UserModel.findOne({ email });
+    return user;
+  }
 }
 
-module.exports = new UserService();
+export default new UserService();

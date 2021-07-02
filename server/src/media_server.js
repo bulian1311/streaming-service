@@ -1,18 +1,20 @@
-const NodeMediaServer = require('node-media-server');
-const config = require('./config');
-const UserModel = require('./models/user.model');
+import NodeMediaServer from 'node-media-server';
+import config from './config/index.js';
+import UserModel from './models/user.model.js';
 
-nms = new NodeMediaServer(config.rtmp_server);
+const nms = new NodeMediaServer(config.rtmp_server);
 
 nms.on('prePublish', async (id, StreamPath, args) => {
   try {
     let streamKey = getStreamKeyFromStreamPath(StreamPath);
-    const user = await UserModel.findOne({streamKey});
+    const user = await UserModel.findOne({ streamKey });
 
-    if(!user) {
-      let session = nms.getSession(id);
-      session.reject();
-    }
+    console.log('qqqqqqqqqqqqqqqqqqqq----- ', streamKey);
+
+    // if (!user) {
+    //   let session = nms.getSession(id);
+    //   session.reject();
+    // }
   } catch (err) {
     console.log(err.message);
   }
@@ -25,7 +27,7 @@ nms.on('prePublish', async (id, StreamPath, args) => {
 
 const getStreamKeyFromStreamPath = (path) => {
   let parts = path.split('/');
-  return parts[parts.length - 1];
+  return parts[parts.length];
 };
 
-module.exports = nms;
+export default nms;

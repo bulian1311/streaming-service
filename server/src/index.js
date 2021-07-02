@@ -1,14 +1,15 @@
-require('dotenv').config();
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const mongoose = require('mongoose');
-// const session = require('express-session');
+import dotenv from 'dotenv';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import mongoose from 'mongoose';
 
-const errorMiddleware = require('./middlewares/error.midleware');
-const router = require('./router');
+dotenv.config();
 
-const node_media_server = require('./media_server');
+import router from './router/index.js';
+import errorMiddleware from './middlewares/error.middleware.js';
+
+import node_media_server from './media_server.js';
 
 const { PORT = 4000 } = process.env;
 const app = express();
@@ -22,7 +23,7 @@ app.use(
     origin: process.env.CLIENT_URL,
   }),
 );
-// app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
+
 app.use('/api', router);
 
 app.use(errorMiddleware);

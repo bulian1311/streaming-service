@@ -1,6 +1,6 @@
-const ApiError = require('../errors/api.error');
+import ApiError from '../errors/api.error.js';
 
-module.exports = function (err, req, res, next) {
+export default function (err, req, res, next) {
   console.error(err);
 
   if (err instanceof ApiError) {
@@ -10,4 +10,4 @@ module.exports = function (err, req, res, next) {
   }
 
   return res.status(500).json({ message: 'Ошибка на сервере!' });
-};
+}

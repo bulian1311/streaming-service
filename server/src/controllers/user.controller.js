@@ -1,7 +1,7 @@
-const userService = require('../services/user.service');
-const { validationResult } = require('express-validator');
+import { validationResult } from 'express-validator';
 
-const ApiError = require('../errors/api.error');
+import userService from '../services/user.service.js';
+import ApiError from '../errors/api.error.js';
 
 class UserController {
   async registration(req, res, next) {
@@ -90,11 +90,15 @@ class UserController {
 
   async getUser(req, res, next) {
     try {
-      
+      const email = req.query.user;
+      if (!email) next(ApiError.BadRequest('Необходимы параметры.'));
+
+      const user = await userService.getUserByEmail(email);
+      res.json(user);
     } catch (err) {
-      
+      next(err);
     }
   }
 }
 
-module.exports = new UserController();
+export default new UserController();

@@ -1,9 +1,11 @@
-const express = require('express');
+import express from 'express';
 
-const userRouter = require('./user.router');
+import userRouter from './user.router.js';
+import streamRouter from './stream.router.js';
 
 const router = new express.Router();
 
 userRouter(router);
+streamRouter(router);
 
-module.exports = router;
+export default router;

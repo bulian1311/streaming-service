@@ -1,4 +1,4 @@
-module.exports = class ApiError extends Error {
+export default class ApiError extends Error {
   status;
   errors;
 
@@ -16,4 +16,8 @@ module.exports = class ApiError extends Error {
   static BadRequest(message, errors = []) {
     return new ApiError(400, message, errors);
   }
-};
+
+  static NotFoundError() {
+    return new ApiError(404, 'Обьект не найден.');
+  }
+}
