@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouteMatch } from "react-router-dom";
-import axios from 'axios';
-import videojs from 'video.js'
+import axios from "axios";
+import videojs from "video.js";
 
 export const VideoPlayer = () => {
   const [stream, setStream] = useState(false);
@@ -53,7 +53,7 @@ export const VideoPlayer = () => {
         player.dispose();
       }
     };
-  }
+  };
 
   if (!stream) return " Loading ... ";
 

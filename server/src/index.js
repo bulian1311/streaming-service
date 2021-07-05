@@ -36,7 +36,7 @@ const start = async () => {
         useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: false
+        useFindAndModify: false,
       },
       () => console.log('Mongo connection success.'),
     );

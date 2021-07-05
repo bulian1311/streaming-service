@@ -12,7 +12,7 @@ export const Settings = () => {
   const getStreamSettings = async () => {
     const res = await axios.get("/settings/stream_key");
     setStreamKey(res.data.streamKey);
-  }
+  };
 
   const generateStreamKey = async (e) => {
     const res = await axios.post("/settings/stream_key");

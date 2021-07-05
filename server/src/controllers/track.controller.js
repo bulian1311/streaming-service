@@ -1,6 +1,6 @@
 import { validationResult } from 'express-validator';
-import trackService from '../services/track.service.js'
-import CreateTrackDto from '../dtos/create-track.dto.js'
+import trackService from '../services/track.service.js';
+import CreateTrackDto from '../dtos/create-track.dto.js';
 import ApiError from '../errors/api.error.js';
 
 class TrackController {
@@ -25,7 +25,7 @@ class TrackController {
   async getAll(req, res, next) {
     try {
       const tracks = await trackService.getAll();
-      res.json(tracks)
+      res.json(tracks);
     } catch (err) {
       next(err);
     }
@@ -54,4 +54,4 @@ class TrackController {
   }
 }
 
-export default new TrackController;
+export default new TrackController();

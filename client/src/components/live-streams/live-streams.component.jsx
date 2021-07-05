@@ -17,7 +17,7 @@ export const LiveStreams = () => {
     if (typeof (streams["live"] !== "undefined")) {
       getStreamsInfo(streams["live"]);
     }
-  }
+  };
 
   const getStreamsInfo = async (live_streams) => {
     const res = await axios.get("http://127.0.0.1:4000/api/streams/info", {

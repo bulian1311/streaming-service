@@ -8,7 +8,7 @@ const TrackSchema = new Schema({
   text: { type: String },
   listens: { type: String },
   audio: { type: String },
-  comments: { type: [Schema.Types.ObjectId], ref: 'Comment' }
+  comments: { type: [Schema.Types.ObjectId], ref: 'Comment' },
 });
 
 export default model('Track', TrackSchema);

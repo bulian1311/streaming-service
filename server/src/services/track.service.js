@@ -1,5 +1,5 @@
-import trackModel from '../models/track.model.js'
-import commentModel from '../models/comment.model.js'
+import trackModel from '../models/track.model.js';
+import commentModel from '../models/comment.model.js';
 
 class TrackService {
   async create(dto) {
@@ -21,6 +21,6 @@ class TrackService {
     const track = await trackModel.findByIdAndRemove(id);
     return track;
   }
-};
+}
 
-export default new TrackService;
+export default new TrackService();
