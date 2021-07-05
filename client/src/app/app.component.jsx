@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 
 import LoginForm from "../components/login-form";
-import LiveStreams from "../components/live-streams";
+//import LiveStreams from "../components/live-streams";
 import VideoPlayer from "../components/video-player";
 import Settings from "../components/settings";
 
@@ -16,12 +16,13 @@ const App = () => {
     if (localStorage.getItem("token")) {
       store.checkAuth();
     }
-  }, []);
+  }, [store]);
 
   return (
     <Switch>
       <Route exact path="/">
-        <LiveStreams />
+        {/* <LiveStreams /> */}
+        <h1>Qwerty</h1>
       </Route>
       <Route exact path="/stream/:username">
         <VideoPlayer />

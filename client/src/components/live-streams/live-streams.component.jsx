@@ -6,16 +6,20 @@ export const LiveStreams = () => {
   const [liveStreams, setLiveStreams] = useState([]);
 
   useEffect(() => {
-    const res = await axios.get("http://127.0.0.1:8888" + "/api/streams");
+    getLiveStreams();
+  }, []);
+
+  const getLiveStreams = async () => {
+    const res = await axios.get("http://127.0.0.1:8888/api/streams");
 
     let streams = res.data;
 
     if (typeof (streams["live"] !== "undefined")) {
       getStreamsInfo(streams["live"]);
     }
-  }, []);
+  }
 
-  const getStreamsInfo = (live_streams) => {
+  const getStreamsInfo = async (live_streams) => {
     const res = await axios.get("http://127.0.0.1:4000/api/streams/info", {
       params: {
         streams: live_streams,

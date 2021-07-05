@@ -9,7 +9,7 @@ dotenv.config();
 import router from './router/index.js';
 import errorMiddleware from './middlewares/error.middleware.js';
 
-import node_media_server from './media_server.js';
+//import node_media_server from './media_server.js';
 
 const { PORT = 4000 } = process.env;
 const app = express();
@@ -36,13 +36,14 @@ const start = async () => {
         useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useFindAndModify: false
       },
       () => console.log('Mongo connection success.'),
     );
 
     app.listen(PORT, () => console.log(`App listening on ${PORT}!`));
 
-    node_media_server.run();
+    //node_media_server.run();
   } catch (err) {
     console.error(err.message);
   }

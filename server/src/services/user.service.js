@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import { nanoid } from 'nanoid';
 
-import UserModel from '../models/user.model.js';
+import userModel from '../models/user.model.js';
 import mailService from '../services/mail.service.js';
 import tokenService from '../services/token.service.js';
 import UserDto from '../dtos/user.dto.js';
@@ -9,7 +9,7 @@ import ApiError from '../errors/api.error.js';
 
 class UserService {
   async registration(email, password) {
-    const existUser = await UserModel.findOne({ email });
+    const existUser = await userModel.findOne({ email });
 
     if (existUser) {
       throw ApiError.BadRequest(
@@ -21,7 +21,7 @@ class UserService {
     const activationLink = nanoid();
     const streamKey = nanoid();
 
-    const user = await UserModel.create({
+    const user = await userModel.create({
       email,
       password: hashPassword,
       activationLink,
@@ -44,7 +44,7 @@ class UserService {
   }
 
   async activate(activationLink) {
-    const user = await UserModel.findOne({ activationLink });
+    const user = await userModel.findOne({ activationLink });
 
     if (!user) {
       throw ApiError.BadRequest('Не корректная ссылка активации.');
@@ -56,7 +56,7 @@ class UserService {
   }
 
   async login(email, password) {
-    const user = await UserModel.findOne({ email });
+    const user = await userModel.findOne({ email });
 
     if (!user) {
       throw ApiError.BadRequest('Не верный логин или пароль.');
@@ -95,7 +95,7 @@ class UserService {
       throw ApiError.UnauthorizedError();
     }
 
-    const user = await UserModel.findById(userData.id);
+    const user = await userModel.findById(userData.id);
 
     const userDto = new UserDto(user);
     const tokens = await tokenService.generateTokens({ ...userDto });
@@ -108,12 +108,12 @@ class UserService {
   }
 
   async getAllUsers() {
-    const users = await UserModel.find();
+    const users = await userModel.find();
     return users;
   }
 
   async getUserByEmail(email) {
-    const user = await UserModel.findOne({ email });
+    const user = await userModel.findOne({ email });
     return user;
   }
 }

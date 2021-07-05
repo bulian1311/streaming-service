@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouteMatch } from "react-router-dom";
+import axios from 'axios';
+import videojs from 'video.js'
 
 export const VideoPlayer = () => {
   const [stream, setStream] = useState(false);
@@ -11,6 +13,10 @@ export const VideoPlayer = () => {
   const player = null;
 
   useEffect(() => {
+    getVideoStream();
+  }, []);
+
+  const getVideoStream = async () => {
     const res = await axios.get("http://127.0.0.1:4000/api/user", {
       params: {
         username: match.params.username,
@@ -47,7 +53,7 @@ export const VideoPlayer = () => {
         player.dispose();
       }
     };
-  }, []);
+  }
 
   if (!stream) return " Loading ... ";
 

@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-import UserModel from '../models/user.model.js';
+import userModel from '../models/user.model.js';
 import ApiError from '../errors/api.error.js';
 
 class StreamService {
@@ -13,13 +13,13 @@ class StreamService {
       query.$or.push({ stream_key: stream });
     }
 
-    const users = await UserModel.find(query);
+    const users = await userModel.find(query);
 
     return users;
   }
 
   async getStreamKeyByEmail(email) {
-    const user = await UserModel.findOne({ email });
+    const user = await userModel.findOne({ email });
 
     if (!user.streamKey) throw new ApiError.NotFoundError();
 
@@ -27,7 +27,7 @@ class StreamService {
   }
 
   async updateStreamKeyByEmail(email) {
-    const user = await UserModel.findOneAndUpdate(
+    const user = await userModel.findOneAndUpdate(
       { email },
       { streamKey: nanoid() },
     );

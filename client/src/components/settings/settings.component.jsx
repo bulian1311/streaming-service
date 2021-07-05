@@ -6,11 +6,15 @@ export const Settings = () => {
   const [streamKey, setStreamKey] = useState("");
 
   useEffect(() => {
-    const res = await axios.get("/settings/stream_key");
-    setStreamKey(res.data.streamKey);
+    getStreamSettings();
   }, []);
 
-  const generateStreamKey = (e) => {
+  const getStreamSettings = async () => {
+    const res = await axios.get("/settings/stream_key");
+    setStreamKey(res.data.streamKey);
+  }
+
+  const generateStreamKey = async (e) => {
     const res = await axios.post("/settings/stream_key");
     setStreamKey(res.data.stream_key);
   };
