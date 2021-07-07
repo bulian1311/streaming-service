@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 
 const TrackSchema = new Schema({
-  name: { type: String, unique: true, required: true },
+  name: { type: String, required: true },
   picture: { type: String },
   artist: { type: String },
   text: { type: String },

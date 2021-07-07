@@ -4,11 +4,10 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
-dotenv.config();
-
 import router from './router/index.js';
 import errorMiddleware from './middlewares/error.middleware.js';
 
+dotenv.config();
 //import node_media_server from './media_server.js';
 
 const { PORT = 4000 } = process.env;
@@ -23,6 +22,7 @@ app.use(
     origin: process.env.CLIENT_URL,
   }),
 );
+app.use('/uploads', express.static('uploads'));
 
 app.use('/api', router);
 

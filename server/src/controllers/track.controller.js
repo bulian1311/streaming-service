@@ -12,9 +12,11 @@ class TrackController {
         return next(ApiError.BadRequest('Ошибка валидации', errors.array()));
       }
 
+      const { picture, audio } = req.files;
+
       const trackDto = new CreateTrackDto(req.body);
 
-      const track = await trackService.create(trackDto);
+      const track = await trackService.create(trackDto, picture[0], audio[0]);
 
       res.json(track);
     } catch (err) {
@@ -24,7 +26,9 @@ class TrackController {
 
   async getAll(req, res, next) {
     try {
-      const tracks = await trackService.getAll();
+      const { limit, skip } = req.query;
+
+      const tracks = await trackService.getAll(limit, skip);
       res.json(tracks);
     } catch (err) {
       next(err);
@@ -37,6 +41,18 @@ class TrackController {
       const track = await trackService.getOneById(id);
 
       res.json(track);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async search(req, res, next) {
+    try {
+      const { query } = req.query;
+
+      const tracks = await trackService.search(query);
+
+      res.json(tracks);
     } catch (err) {
       next(err);
     }
