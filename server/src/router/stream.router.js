@@ -1,11 +1,13 @@
+import express from 'express';
+
 import authMidleware from '../middlewares/auth.middleware.js';
 import streamController from '../controllers/stream.controller.js';
 
-const streamRouter = (router) => {
-  router.get('/stream/info', authMidleware, streamController.getStreams);
+const streamRouter = express.Router();
 
-  router.get('/stream/key', authMidleware, streamController.getStreamKey);
-  router.post('/stream/key', authMidleware, streamController.updateStreamKey);
-};
+streamRouter.get('/info', authMidleware, streamController.getStreams);
+
+streamRouter.get('/key', authMidleware, streamController.getStreamKey);
+streamRouter.post('/key', authMidleware, streamController.updateStreamKey);
 
 export default streamRouter;

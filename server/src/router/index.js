@@ -1,17 +1,14 @@
 import express from 'express';
-import multer from 'multer';
+const router = express.Router();
 
 import userRouter from './user.router.js';
 import trackRouter from './track.router.js';
 import streamRouter from './stream.router.js';
 import commentRouter from './comment.router.js';
 
-const router = new express.Router();
-const upload = multer({ dest: 'uploads/' });
-
-userRouter(router);
-trackRouter(router, upload);
-streamRouter(router);
-commentRouter(router);
+router.use('/', userRouter);
+router.use('/track', trackRouter);
+router.use('/stream', streamRouter);
+router.use('/comment', commentRouter);
 
 export default router;

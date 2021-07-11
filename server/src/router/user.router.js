@@ -1,27 +1,28 @@
+import express from 'express';
 import { body } from 'express-validator';
 
 import authMidleware from '../middlewares/auth.middleware.js';
 import userController from '../controllers/user.controller.js';
 
-const userRouter = (router) => {
-  router.post(
-    '/registration',
-    body('email').isEmail(),
-    body('password').isLength({ min: 4, max: 32 }),
-    userController.registration,
-  );
+const userRouter = express.Router();
 
-  router.post('/login', userController.login);
+userRouter.post(
+  '/registration',
+  body('email').isEmail(),
+  body('password').isLength({ min: 4, max: 32 }),
+  userController.registration,
+);
 
-  router.post('/logout', userController.logout);
+userRouter.post('/login', userController.login);
 
-  router.get('/activate/:link', userController.activate);
+userRouter.post('/logout', userController.logout);
 
-  router.get('/refresh', userController.refresh);
+userRouter.get('/activate/:link', userController.activate);
 
-  router.get('/users', authMidleware, userController.getUsers);
+userRouter.get('/refresh', userController.refresh);
 
-  router.get('/user', authMidleware, userController.getUser);
-};
+userRouter.get('/users', authMidleware, userController.getUsers);
+
+userRouter.get('/user', authMidleware, userController.getUser);
 
 export default userRouter;

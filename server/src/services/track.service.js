@@ -1,5 +1,4 @@
 import trackModel from '../models/track.model.js';
-import commentModel from '../models/comment.model.js';
 
 class TrackService {
   async create(dto, picture, audio) {

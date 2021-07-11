@@ -1,34 +1,37 @@
+import express from 'express';
 import { body, param } from 'express-validator';
 import mongoose from 'mongoose';
+import multer from 'multer';
 
 import trackController from '../controllers/track.controller.js';
 
-const trackRouter = (router, upload) => {
-  router.get('/track', trackController.getAll);
+const upload = multer({ dest: 'uploads/' });
+const trackRouter = express.Router();
 
-  router.get(
-    '/track/:id',
-    param('id').customSanitizer((value) => {
-      return mongoose.Types.ObjectId(value);
-    }),
-    trackController.getOne,
-  );
+trackRouter.get('/', trackController.getAll);
 
-  router.post(
-    '/track',
-    upload.fields([
-      { name: 'picture', maxCount: 1 },
-      { name: 'audio', maxCount: 1 },
-    ]),
-    body('name').isString(),
-    body('artist').isString(),
-    body('text').isString(),
-    trackController.create,
-  );
+trackRouter.get(
+  '/:id',
+  param('id').customSanitizer((value) => {
+    return mongoose.Types.ObjectId(value);
+  }),
+  trackController.getOne,
+);
 
-  router.get('/search', trackController.search);
+trackRouter.post(
+  '/',
+  upload.fields([
+    { name: 'picture', maxCount: 1 },
+    { name: 'audio', maxCount: 1 },
+  ]),
+  body('name').isString(),
+  body('artist').isString(),
+  body('text').isString(),
+  trackController.create,
+);
 
-  router.delete('/track/:id', trackController.delete);
-};
+trackRouter.get('/search', trackController.search);
+
+trackRouter.delete('/:id', trackController.delete);
 
 export default trackRouter;
