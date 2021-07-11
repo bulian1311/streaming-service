@@ -5,10 +5,12 @@ import axios from "axios";
 import { API_URL } from "../http";
 
 export default class Store {
+  rootStore;
   user = null;
   isAuth = false;
 
-  constructor() {
+  constructor(rootStore) {
+    this.rootStore = rootStore;
     makeAutoObservable(this);
   }
 
