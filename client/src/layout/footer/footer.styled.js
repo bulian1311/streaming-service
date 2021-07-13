@@ -5,10 +5,11 @@ export const Container = styled.div`
   background-color: #392e5c;
 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.6fr 1.8fr 0.6fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
   grid-template-areas: "fleft fmid fright";
+  padding: 2rem 0;
 `;
 
 export const Left = styled.div`
@@ -22,6 +23,7 @@ export const Mid = styled.div`
   grid-area: fmid;
   justify-self: center;
   align-self: center;
+  display: flex;
 `;
 
 export const Right = styled.div`
@@ -29,4 +31,14 @@ export const Right = styled.div`
   justify-self: end;
   align-self: center;
   padding-right: 2rem;
+`;
+
+export const Description = styled.p`
+  margin-top: .5rem;
+`;
+
+export const LinksGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
 `;

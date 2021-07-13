@@ -1,15 +1,25 @@
 import React from "react";
-import { Container, Left, Mid, Right } from "./";
 
-import { Button } from "../../components/button";
+import { Button, Search, NavLink, Logo } from "../../components";
+
+import { Container, Left, Mid, Right } from "./";
 
 export const Navbar = () => {
   return (
     <Container>
-      <Left>left</Left>
-      <Mid>mid</Mid>
+      <Left>
+        <Logo />
+        <NavLink large style={{marginRight: 10}}>Ссылка раз</NavLink>
+        <NavLink large>Ссылка два</NavLink>
+      </Left>
+      <Mid>
+        <Search />
+      </Mid>
       <Right>
-        <Button>Регистрация</Button>
+        <Button primary style={{ marginRight: 20 }}>
+          Регистрация
+        </Button>
+        <NavLink large>Войти</NavLink>
       </Right>
     </Container>
   );

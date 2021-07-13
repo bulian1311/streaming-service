@@ -6,6 +6,8 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     --bg-color: #201c2b;
     --text-color: #dad8de;
+    --primary-color: #944fff;
+    --secondary-color: #392e5c;
     
     /* Большие девайсы (большие десктопы, < 1200px) */
     @media (max-width: 1199.98px) { 
@@ -54,4 +56,18 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     outline: none;
   }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--bg-color);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+  }
 `;
+
