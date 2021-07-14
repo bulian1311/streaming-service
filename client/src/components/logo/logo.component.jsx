@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import {LogoIcon, LogoWrapper} from './'
+import { LogoIcon, LogoWrapper } from "./";
 
 export const Logo = () => {
   return (
@@ -8,5 +8,5 @@ export const Logo = () => {
       <LogoIcon />
       <span style={{ color: "var(--text-color)" }}>Streaming</span>Service
     </LogoWrapper>
-  )
-}
+  );
+};

@@ -34,7 +34,7 @@ export const Right = styled.div`
 `;
 
 export const Description = styled.p`
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 `;
 
 export const LinksGroup = styled.div`

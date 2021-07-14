@@ -33,5 +33,3 @@ export const Right = styled.div`
   align-self: center;
   padding-right: 2rem;
 `;
-
-

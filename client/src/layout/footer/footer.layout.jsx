@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Logo, NavLink} from '../../components'
+import { Logo, NavLink } from "../../components";
 import { Container, Left, Mid, Right, Description, LinksGroup } from "./";
 
 export const Footer = () => {
@@ -9,7 +9,8 @@ export const Footer = () => {
       <Left>
         <Logo />
         <Description>
-          Какое-нибудь скучное описание. Какое-нибудь скучное описание. Какое-нибудь скучное описание.
+          Какое-нибудь скучное описание. Какое-нибудь скучное описание.
+          Какое-нибудь скучное описание.
         </Description>
       </Left>
       <Mid>
@@ -25,7 +26,7 @@ export const Footer = () => {
           <NavLink>Ссылка куда-нибудь</NavLink>
         </LinksGroup>
         <LinksGroup>
-        <h3>Описание</h3>
+          <h3>Описание</h3>
           <NavLink>Ссылка куда-нибудь</NavLink>
           <NavLink>Ссылка куда-нибудь</NavLink>
           <NavLink>Ссылка куда-нибудь</NavLink>
@@ -36,7 +37,7 @@ export const Footer = () => {
           <NavLink>Ссылка куда-нибудь</NavLink>
         </LinksGroup>
         <LinksGroup>
-        <h3>Описание</h3>
+          <h3>Описание</h3>
           <NavLink>Ссылка куда-нибудь</NavLink>
           <NavLink>Ссылка куда-нибудь</NavLink>
           <NavLink>Ссылка куда-нибудь</NavLink>

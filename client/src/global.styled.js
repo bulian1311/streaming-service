@@ -58,7 +58,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   *::-webkit-scrollbar {
-    width: 10px;
+    width: .5rem;
   }
 
   *::-webkit-scrollbar-track {
@@ -70,4 +70,3 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 10px;
   }
 `;
-

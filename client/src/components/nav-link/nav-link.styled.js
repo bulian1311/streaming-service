@@ -6,7 +6,7 @@ export const StyledLink = styled.a`
   font-size: 0.875rem;
   line-height: normal;
   cursor: pointer;
-  margin-top: ${props => props.large ? "0" : "10px"};
+  margin-top: ${(props) => (props.large ? "0" : "10px")};
 
   :hover {
     text-decoration: underline;

@@ -5,4 +5,5 @@ export * from "./video-player";
 export * from "./button";
 export * from "./search";
 export * from "./nav-link";
-export * from './logo';
+export * from "./logo";
+export * from "./tag";

@@ -9,7 +9,9 @@ export const Navbar = () => {
     <Container>
       <Left>
         <Logo />
-        <NavLink large style={{marginRight: 10}}>Ссылка раз</NavLink>
+        <NavLink large style={{ marginRight: 10 }}>
+          Ссылка раз
+        </NavLink>
         <NavLink large>Ссылка два</NavLink>
       </Left>
       <Mid>

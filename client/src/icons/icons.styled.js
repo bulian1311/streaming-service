@@ -1,18 +1,33 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from "styled-components";
 
-import { ReactComponent as LeftSvg } from './left.svg'
-import { ReactComponent as RightSvg } from './right.svg'
+import { ReactComponent as LeftSvg } from "./left.svg";
+import { ReactComponent as RightSvg } from "./right.svg";
+import { ReactComponent as UsersSvg } from "./users.svg";
+import { ReactComponent as SmileSvg } from "./smile.svg";
+import { ReactComponent as SearchSvg } from "./search.svg";
 
 const mixin = css`
   width: 1rem;
   height: 1rem;
   fill: var(--text-color);
-`
+`;
 
-export const LeftArrow = styled(LeftSvg)`
+export const LeftArrowIcon = styled(LeftSvg)`
   ${mixin}
 `;
 
-export const RightArrow = styled(RightSvg)`
+export const RightArrowIcon = styled(RightSvg)`
+  ${mixin}
+`;
+
+export const UsersIcon = styled(UsersSvg)`
+  ${mixin}
+`;
+
+export const SmileIcon = styled(SmileSvg)`
+  ${mixin}
+`;
+
+export const SearchIcon = styled(SearchSvg)`
   ${mixin}
 `;
