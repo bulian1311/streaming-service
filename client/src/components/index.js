@@ -7,3 +7,6 @@ export * from "./search";
 export * from "./nav-link";
 export * from "./logo";
 export * from "./tag";
+export * from "./modal";
+export * from "./input";
+export * from "./tabs";

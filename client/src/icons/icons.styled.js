@@ -5,6 +5,8 @@ import { ReactComponent as RightSvg } from "./right.svg";
 import { ReactComponent as UsersSvg } from "./users.svg";
 import { ReactComponent as SmileSvg } from "./smile.svg";
 import { ReactComponent as SearchSvg } from "./search.svg";
+import { ReactComponent as HomeSvg } from "./home.svg";
+import { ReactComponent as CancelSvg } from "./cancel.svg";
 
 const mixin = css`
   width: 1rem;
@@ -29,5 +31,13 @@ export const SmileIcon = styled(SmileSvg)`
 `;
 
 export const SearchIcon = styled(SearchSvg)`
+  ${mixin}
+`;
+
+export const HomeIcon = styled(HomeSvg)`
+  ${mixin}
+`;
+
+export const CancelIcon = styled(CancelSvg)`
   ${mixin}
 `;

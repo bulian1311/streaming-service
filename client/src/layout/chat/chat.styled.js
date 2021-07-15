@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
   grid-area: chat;
   height: calc(100vh - 4rem);
+  box-shadow: var(--shadow-light);
 
   display: grid;
   grid-template-columns: ${(props) => (props.isVisible ? "20rem" : "4rem")};
-  grid-template-rows: 0.3fr 2.4fr 0.3fr;
+  grid-template-rows: 4rem 2.4fr 0.3fr;
   gap: 0px 0px;
   grid-template-areas:
     "chat-header"
@@ -41,18 +42,6 @@ export const ChatFooter = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-`;
-
-export const StyledInput = styled.input`
-  padding: 0.4rem 0.5rem;
-  background-color: var(--bg-color);
-  border: 1px solid var(--secondary-color);
-  border-radius: 4px;
-  color: var(--text-color);
-
-  :focus {
-    border: 1px solid var(--primary-color);
-  }
 `;
 
 export const StyledMessage = styled.span`

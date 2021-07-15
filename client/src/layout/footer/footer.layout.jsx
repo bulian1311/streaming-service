@@ -1,12 +1,12 @@
 import React from "react";
 
-import { Logo, NavLink } from "../../components";
-import { Container, Left, Mid, Right, Description, LinksGroup } from "./";
+//import { Logo, NavLink } from "../../components";
+import { Container } from "./";
 
 export const Footer = () => {
   return (
     <Container>
-      <Left>
+      {/* <Left>
         <Logo />
         <Description>
           Какое-нибудь скучное описание. Какое-нибудь скучное описание.
@@ -47,7 +47,7 @@ export const Footer = () => {
           <NavLink>Ссылка куда-нибудь</NavLink>
         </LinksGroup>
       </Mid>
-      <Right>footer-right</Right>
+      <Right>footer-right</Right> */}
     </Container>
   );
 };

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   grid-area: navbar;
-  box-shadow: 0 3px 21px rgb(117 117 117 / 8%);
+  box-shadow: var(--shadow-light);
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

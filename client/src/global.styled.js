@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     --text-color: #dad8de;
     --primary-color: #944fff;
     --secondary-color: #392e5c;
+    --shadow-light: 0 3px 21px rgb(117 117 117 / 8%);
     
     /* Большие девайсы (большие десктопы, < 1200px) */
     @media (max-width: 1199.98px) { 
@@ -44,6 +45,14 @@ export const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, h5 {
     margin: 0;
+  }
+
+  ul {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
   }
   
 	*,

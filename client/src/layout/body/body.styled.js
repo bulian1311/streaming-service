@@ -5,4 +5,5 @@ export const Container = styled.div`
   height: calc(100vh - 4rem);
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 2rem;
 `;

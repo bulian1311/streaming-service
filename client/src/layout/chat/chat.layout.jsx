@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Tag } from "../../components";
+import { Tag, Input } from "../../components";
 
 import {
   RightArrowIcon,
@@ -8,19 +8,10 @@ import {
   UsersIcon,
   SmileIcon,
 } from "../../icons";
-import {
-  Container,
-  ChatHeader,
-  ChatBody,
-  ChatFooter,
-  StyledInput,
-  StyledMessage,
-} from "./";
+import { Container, ChatHeader, ChatBody, ChatFooter, StyledMessage } from "./";
 
 export const Chat = () => {
   const [isVisible, setIsVisible] = useState(true);
-
-  console.log(isVisible);
 
   return (
     <Container isVisible={isVisible}>
@@ -91,7 +82,7 @@ export const Chat = () => {
         <Tag>
           <SmileIcon />
         </Tag>
-        <StyledInput />
+        <Input />
       </ChatFooter>
     </Container>
   );

@@ -9,10 +9,10 @@ export const Navbar = () => {
     <Container>
       <Left>
         <Logo />
-        <NavLink large style={{ marginRight: 10 }}>
+        <NavLink to="/" style={{ marginRight: 10 }}>
           Ссылка раз
         </NavLink>
-        <NavLink large>Ссылка два</NavLink>
+        <NavLink to="/">Ссылка два</NavLink>
       </Left>
       <Mid>
         <Search />
@@ -21,7 +21,7 @@ export const Navbar = () => {
         <Button primary style={{ marginRight: 20 }}>
           Регистрация
         </Button>
-        <NavLink large>Войти</NavLink>
+        <NavLink to="/">Войти</NavLink>
       </Right>
     </Container>
   );

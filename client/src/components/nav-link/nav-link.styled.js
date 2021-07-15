@@ -1,12 +1,12 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const StyledLink = styled.a`
+export const StyledLink = styled(Link)`
   color: var(--text-color);
-  font-weight: ${(props) => (props.large ? "600" : "400")};
-  font-size: 0.875rem;
+  font-weight: 700;
+  font-size: 1rem;
   line-height: normal;
   cursor: pointer;
-  margin-top: ${(props) => (props.large ? "0" : "10px")};
 
   :hover {
     text-decoration: underline;
