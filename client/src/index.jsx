@@ -10,13 +10,13 @@ import { GlobalStyle } from "./global.styled";
 
 const store = new Store();
 
-export const Context = React.createContext({ store });
+export const Context = React.createContext(store);
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
     <BrowserRouter>
-      <Context.Provider value={{ store }}>
+      <Context.Provider value={store}>
         <App />
       </Context.Provider>
     </BrowserRouter>

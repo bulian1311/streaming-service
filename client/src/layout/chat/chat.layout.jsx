@@ -76,10 +76,7 @@ export const Chat = () => {
         <StyledMessage>User: message message message</StyledMessage>
       </ChatBody>
       <ChatFooter isVisible={isVisible}>
-        <Tag>
-          <SmileIcon />
-        </Tag>
-        <Tag>
+        <Tag style={{ marginRight: "0.5rem" }}>
           <SmileIcon />
         </Tag>
         <Input />

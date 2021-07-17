@@ -1,7 +1,12 @@
 import React from "react";
 
-import { StyledInput } from "./input.styled";
+import { StyledInput, StyledLabel, InputGroup } from "./input.styled";
 
-export const Input = ({ ...otherProps }) => {
-  return <StyledInput {...otherProps} />;
+export const Input = ({ label, ...otherProps }) => {
+  return (
+    <InputGroup>
+      {label && <StyledLabel>{label}</StyledLabel>}
+      <StyledInput {...otherProps} />
+    </InputGroup>
+  );
 };

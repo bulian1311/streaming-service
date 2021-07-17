@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   position: fixed;
   background-color: black;
-  opacity: 50%;
+  background: rgba(0, 0, 0, 0.5);
 
   display: flex;
   align-items: center;
@@ -14,7 +14,9 @@ export const Container = styled.div`
 `;
 
 export const ModalBody = styled.div`
-  padding: 1rem;
+  padding: 1.5rem;
+  color: var(--text-color);
   background-color: var(--secondary-color);
   border-radius: 4px;
+  position: relative;
 `;

@@ -1,17 +1,25 @@
-import { makeAutoObservable } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 
 import AuthService from "../services/auth.service";
 import axios from "axios";
 import { API_URL } from "../http";
 
-export default class Store {
+export default class UserStore {
   rootStore;
   user = null;
   isAuth = false;
+  isFormVisible = false;
 
   constructor(rootStore) {
     this.rootStore = rootStore;
-    makeAutoObservable(this);
+    makeObservable(this, {
+      user: observable,
+      isAuth: observable,
+      isFormVisible: observable,
+      setUser: action,
+      setAuth: action,
+      setIsFormVisible: action,
+    });
   }
 
   setAuth(isAuth) {
@@ -20,6 +28,10 @@ export default class Store {
 
   setUser(user) {
     this.user = user;
+  }
+
+  setIsFormVisible(isVisible) {
+    this.isFormVisible = isVisible;
   }
 
   async login(email, password) {

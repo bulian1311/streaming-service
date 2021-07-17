@@ -1,11 +1,12 @@
 import React from "react";
 
+import { LoadingIcon } from "../../icons";
 import { StyledButton } from "./";
 
-export const Button = ({ children, primary, style }) => {
+export const Button = ({ children, primary, isLoading, ...props }) => {
   return (
-    <StyledButton style={style} primary={primary}>
-      {children}
+    <StyledButton primary={primary} {...props}>
+      {isLoading ? <LoadingIcon /> : children}
     </StyledButton>
   );
 };

@@ -1,10 +1,14 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
+import { useStore } from "../../hooks";
 
 import { Button, Search, NavLink, Logo } from "../../components";
 
 import { Container, Left, Mid, Right } from "./";
 
-export const Navbar = () => {
+export const Navbar = observer(() => {
+  const { userStore } = useStore();
+
   return (
     <Container>
       <Left>
@@ -18,11 +22,10 @@ export const Navbar = () => {
         <Search />
       </Mid>
       <Right>
-        <Button primary style={{ marginRight: 20 }}>
-          Регистрация
+        <Button onClick={() => userStore.setIsFormVisible(true)} primary>
+          Авторизация
         </Button>
-        <NavLink to="/">Войти</NavLink>
       </Right>
     </Container>
   );
-};
+});
