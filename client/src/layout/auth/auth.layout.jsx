@@ -7,7 +7,19 @@ import { Container, StyledForm } from "./auth.styled";
 
 export const Auth = observer(() => {
   const { userStore } = useStore();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [activeTab, setActiveTab] = useState("Войти");
+
+  const login = async () => {
+    await userStore.login(email, password);
+    userStore.setIsFormVisible(false);
+  };
+
+  const registration = async () => {
+    await userStore.registration(email, password);
+    userStore.setIsFormVisible(false);
+  };
 
   return (
     <Modal
@@ -23,18 +35,51 @@ export const Auth = observer(() => {
         />
         {activeTab === "Войти" ? (
           <StyledForm>
-            <Input label="Email пользователя" />
-            <Input label="Пароль" />
-            <Button style={{ marginTop: "1rem" }} primary>
+            <Input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              label="Email пользователя"
+              type="email"
+              autocomplete="on"
+            />
+            <Input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              label="Пароль"
+              type="password"
+            />
+            <Button
+              onClick={login}
+              style={{ marginTop: "1rem" }}
+              primary
+              isLoading={userStore.isLoading}
+              disabled={userStore.isLoading}
+            >
               Войти
             </Button>
           </StyledForm>
         ) : (
           <StyledForm>
-            <Input label="Email пользователя" />
-            <Input label="Пароль" />
-            <Input label="Пароль еще раз" />
-            <Button style={{ marginTop: "1rem" }} primary>
+            <Input
+              value={email}
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              label="Email пользователя"
+            />
+            <Input
+              value={password}
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              label="Пароль"
+            />
+            <Input type="password" label="Пароль еще раз" />
+            <Button
+              onClick={registration}
+              style={{ marginTop: "1rem" }}
+              primary
+              isLoading={userStore.isLoading}
+              disabled={userStore.isLoading}
+            >
               Регистрация
             </Button>
           </StyledForm>

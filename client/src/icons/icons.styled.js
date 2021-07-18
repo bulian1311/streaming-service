@@ -8,6 +8,9 @@ import { ReactComponent as SearchSvg } from "./search.svg";
 import { ReactComponent as HomeSvg } from "./home.svg";
 import { ReactComponent as CancelSvg } from "./cancel.svg";
 import { ReactComponent as LoadingSvg } from "./loading.svg";
+import { ReactComponent as SettingsSvg } from "./settings.svg";
+import { ReactComponent as LogoutSvg } from "./logout.svg";
+import { ReactComponent as LoginSvg } from "./login.svg";
 
 const mixin = css`
   width: 1rem;
@@ -44,5 +47,17 @@ export const CancelIcon = styled(CancelSvg)`
 `;
 
 export const LoadingIcon = styled(LoadingSvg)`
+  ${mixin}
+`;
+
+export const SettingsIcon = styled(SettingsSvg)`
+  ${mixin}
+`;
+
+export const LogoutIcon = styled(LogoutSvg)`
+  ${mixin}
+`;
+
+export const LoginIcon = styled(LoginSvg)`
   ${mixin}
 `;

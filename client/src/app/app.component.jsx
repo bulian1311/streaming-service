@@ -5,16 +5,16 @@ import { observer } from "mobx-react-lite";
 import { Layout } from "../layout";
 import { HomePage } from "../pages";
 
-//import { useStore } from '../hooks';
+import { useStore } from "../hooks";
 
 const App = () => {
-  // const { userStore } = useStore();
+  const { userStore } = useStore();
 
-  // React.useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     userStore.checkAuth();
-  //   }
-  // }, [store]);
+  React.useEffect(() => {
+    if (localStorage.getItem("token")) {
+      userStore.checkAuth();
+    }
+  }, [userStore]);
 
   return (
     <Layout>

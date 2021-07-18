@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { observer } from "mobx-react-lite";
 
+import { useStore } from "../../hooks";
 import { Tag, Input } from "../../components";
 
 import {
@@ -10,7 +12,8 @@ import {
 } from "../../icons";
 import { Container, ChatHeader, ChatBody, ChatFooter, StyledMessage } from "./";
 
-export const Chat = () => {
+export const Chat = observer(() => {
+  const { userStore } = useStore();
   const [isVisible, setIsVisible] = useState(true);
 
   return (
@@ -79,8 +82,8 @@ export const Chat = () => {
         <Tag style={{ marginRight: "0.5rem" }}>
           <SmileIcon />
         </Tag>
-        <Input />
+        <Input disabled={!userStore.isAuth} />
       </ChatFooter>
     </Container>
   );
-};
+});

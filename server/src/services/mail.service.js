@@ -5,6 +5,7 @@ class MailService {
     this.transporter = mailer.createTransport({
       service: 'Yandex',
       auth: {
+        type: "login",
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASSWORD,
       },

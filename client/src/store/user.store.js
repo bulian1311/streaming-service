@@ -1,13 +1,12 @@
 import { makeObservable, observable, action } from "mobx";
 
 import AuthService from "../services/auth.service";
-import axios from "axios";
-import { API_URL } from "../http";
 
 export default class UserStore {
   rootStore;
   user = null;
   isAuth = false;
+  isLoading = false;
   isFormVisible = false;
 
   constructor(rootStore) {
@@ -15,8 +14,10 @@ export default class UserStore {
     makeObservable(this, {
       user: observable,
       isAuth: observable,
+      isLoading: observable,
       isFormVisible: observable,
       setUser: action,
+      setIsLoading: action,
       setAuth: action,
       setIsFormVisible: action,
     });
@@ -30,62 +31,76 @@ export default class UserStore {
     this.user = user;
   }
 
+  setIsLoading(isLoading) {
+    this.isLoading = isLoading;
+  }
+
   setIsFormVisible(isVisible) {
     this.isFormVisible = isVisible;
   }
 
   async login(email, password) {
     try {
-      const res = await AuthService.login(email, password);
+      this.setIsLoading(true);
 
-      console.log(res);
+      const user = await AuthService.login(email, password);
 
-      localStorage.setItem("token", res.data.accessToken);
+      console.log(user);
+
       this.setAuth(true);
-      this.setUser(res.data.user);
+      this.setUser(user);
     } catch (err) {
       console.log(err);
+    } finally {
+      this.setIsLoading(false);
     }
   }
 
   async registration(email, password) {
     try {
-      const res = await AuthService.registration(email, password);
+      this.setIsLoading(true);
+      const user = await AuthService.registration(email, password);
 
-      console.log(res);
+      console.log(user);
 
-      localStorage.setItem("token", res.data.accessToken);
       this.setAuth(true);
-      this.setUser(res.data.user);
+      this.setUser(user);
     } catch (err) {
       console.log(err);
+    } finally {
+      this.setIsLoading(false);
     }
   }
 
   async logout() {
     try {
+      this.setIsLoading(true);
+
       await AuthService.logout();
-      localStorage.removeItem("token");
+
       this.setAuth(false);
       this.setUser(null);
     } catch (err) {
       console.log(err);
+    } finally {
+      this.setIsLoading(false);
     }
   }
 
   async checkAuth() {
     try {
-      const res = await axios.get(`${API_URL}/refresh`, {
-        withCredentials: true,
-      });
+      this.setIsLoading(true);
 
-      console.log(res);
+      const user = await AuthService.checkAuth();
 
-      localStorage.setItem("token", res.data.accessToken);
+      console.log(user);
+
       this.setAuth(true);
-      this.setUser(res.data.user);
+      this.setUser(user);
     } catch (err) {
       console.log(err);
+    } finally {
+      this.setIsLoading(false);
     }
   }
 }

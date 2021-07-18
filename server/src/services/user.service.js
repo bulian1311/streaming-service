@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import { nanoid } from 'nanoid';
 
 import userModel from '../models/user.model.js';
-import mailService from '../services/mail.service.js';
+//import mailService from '../services/mail.service.js';
 import tokenService from '../services/token.service.js';
 import UserDto from '../dtos/user.dto.js';
 import ApiError from '../errors/api.error.js';
@@ -28,10 +28,10 @@ class UserService {
       streamKey,
     });
 
-    await mailService.sendActivationMail(
-      email,
-      `${process.env.API_URL}/api/activate/${activationLink}`,
-    );
+    // await mailService.sendActivationMail(
+    //   email,
+    //   `${process.env.API_URL}/api/activate/${activationLink}`,
+    // );
 
     const userDto = new UserDto(user);
     const tokens = await tokenService.generateTokens({ ...userDto });

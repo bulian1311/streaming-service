@@ -33,3 +33,47 @@ export const Right = styled.div`
   align-self: center;
   padding-right: 2rem;
 `;
+
+export const UserContainer = styled.div`
+  position: relative;
+`;
+
+export const UserImg = styled.img`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+`;
+
+export const UserSettings = styled.div`
+  position: absolute;
+  display: ${(props) => (props.isVisible ? "flex" : "none")};
+  flex-direction: column;
+  background-color: var(--secondary-color);
+  right: 0;
+  border-radius: 4px;
+  overflow: hidden;
+`;
+
+export const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+`;
+
+export const LinksGroup = styled.div`
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const UserSettingsLink = styled.a`
+  padding: 0.6rem;
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 4px;
+
+  :hover {
+    background-color: var(--primary-color);
+  }
+`;
