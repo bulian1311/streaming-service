@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import io from 'socket.io-client';
 
 import { useStore } from "../../hooks";
 import { Tag, Input } from "../../components";
@@ -12,9 +13,19 @@ import {
 } from "../../icons";
 import { Container, ChatHeader, ChatBody, ChatFooter, StyledMessage } from "./";
 
+let socket;
+
 export const Chat = observer(() => {
   const { userStore } = useStore();
   const [isVisible, setIsVisible] = useState(true);
+
+  const [name, setName] = useState('testName');
+  const [room, setRoom] = useState('testRoom');
+
+  useEffect(() => {
+    socket = io('localhost:4000', { withCredentials: true });
+    console.log(socket);
+  });
 
   return (
     <Container isVisible={isVisible}>
