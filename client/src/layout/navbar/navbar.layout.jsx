@@ -45,14 +45,14 @@ export const Navbar = observer(() => {
           <UserContainer>
             <UserImg
               onClick={() => setIsSettingsVisible(!isSettingsVisible)}
-              src="http://localhost:4000/uploads/jam.jpeg"
+              src="http://localhost:4000/uploads/jam.jpg"
             />
 
             <UserSettings isVisible={isSettingsVisible}>
               <UserInfo>
                 <UserImg
                   style={{ marginRight: "0.6rem" }}
-                  src="http://localhost:4000/uploads/jam.jpeg"
+                  src="http://localhost:4000/uploads/jam.jpg"
                 />
                 <span>{userStore.user && userStore.user.email}</span>
               </UserInfo>

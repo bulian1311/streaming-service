@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./app/app.component";
 import reportWebVitals from "./reportWebVitals";
 
-import Store from "./store/root.store";
+import Store from "./store";
 import { GlobalStyle } from "./global.styled";
 
 const store = new Store();

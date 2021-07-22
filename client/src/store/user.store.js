@@ -2,7 +2,7 @@ import { makeObservable, observable, action } from "mobx";
 
 import AuthService from "../services/auth.service";
 
-export default class UserStore {
+class UserStore {
   rootStore;
   user = null;
   isAuth = false;
@@ -104,3 +104,5 @@ export default class UserStore {
     }
   }
 }
+
+export default UserStore;

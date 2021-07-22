@@ -23,9 +23,14 @@ export const Chat = observer(() => {
   const [room, setRoom] = useState('testRoom');
 
   useEffect(() => {
-    socket = io('localhost:4000', { withCredentials: true });
-    console.log(socket);
-  });
+    socket = io('localhost:4002', { withCredentials: true });
+    socket.emit('join', {name, room}, () => {});
+
+    return () => {
+      socket.emit('disconect');
+      socket.off();
+    }
+  }, []);
 
   return (
     <Container isVisible={isVisible}>

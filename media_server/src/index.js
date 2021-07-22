@@ -1,13 +1,12 @@
 import NodeMediaServer from 'node-media-server';
 import config from './config/index.js';
-import UserModel from './models/user.model.js';
 
 const nms = new NodeMediaServer(config.rtmp_server);
 
 nms.on('prePublish', async (id, StreamPath, args) => {
   try {
     let streamKey = getStreamKeyFromStreamPath(StreamPath);
-    const user = await UserModel.findOne({ streamKey });
+    //const user = await UserModel.findOne({ streamKey });
 
     console.log('qqqqqqqqqqqqqqqqqqqq----- ', streamKey);
 
