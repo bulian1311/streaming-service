@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { ReactComponent as Icon } from "./video.svg";
+import { ReactComponent as Icon } from './video.svg';
 
 export const LogoWrapper = styled.span`
   display: flex;

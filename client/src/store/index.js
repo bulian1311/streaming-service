@@ -1,3 +1,3 @@
-import RootStore from "./root.store";
+import RootStore from './root.store';
 
 export default RootStore;

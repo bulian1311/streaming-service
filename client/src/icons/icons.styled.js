@@ -1,16 +1,16 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
-import { ReactComponent as LeftSvg } from "./left.svg";
-import { ReactComponent as RightSvg } from "./right.svg";
-import { ReactComponent as UsersSvg } from "./users.svg";
-import { ReactComponent as SmileSvg } from "./smile.svg";
-import { ReactComponent as SearchSvg } from "./search.svg";
-import { ReactComponent as HomeSvg } from "./home.svg";
-import { ReactComponent as CancelSvg } from "./cancel.svg";
-import { ReactComponent as LoadingSvg } from "./loading.svg";
-import { ReactComponent as SettingsSvg } from "./settings.svg";
-import { ReactComponent as LogoutSvg } from "./logout.svg";
-import { ReactComponent as LoginSvg } from "./login.svg";
+import { ReactComponent as LeftSvg } from './left.svg';
+import { ReactComponent as RightSvg } from './right.svg';
+import { ReactComponent as UsersSvg } from './users.svg';
+import { ReactComponent as SmileSvg } from './smile.svg';
+import { ReactComponent as SearchSvg } from './search.svg';
+import { ReactComponent as HomeSvg } from './home.svg';
+import { ReactComponent as CancelSvg } from './cancel.svg';
+import { ReactComponent as LoadingSvg } from './loading.svg';
+import { ReactComponent as SettingsSvg } from './settings.svg';
+import { ReactComponent as LogoutSvg } from './logout.svg';
+import { ReactComponent as LoginSvg } from './login.svg';
 
 const mixin = css`
   width: 1rem;

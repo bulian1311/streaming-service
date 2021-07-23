@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Container, StyledUl, StyledLi, StyledA } from "./tabs.styled";
+import { Container, StyledUl, StyledLi, StyledA } from './tabs.styled';
 
 export const Tabs = ({ tabs, activeTab, setActiveTab, ...props }) => {
   return (

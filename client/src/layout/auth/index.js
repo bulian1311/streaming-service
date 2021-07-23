@@ -1,2 +1,2 @@
-export * from "./auth.layout";
-export * from "./auth.styled";
+export * from './auth.layout';
+export * from './auth.styled';

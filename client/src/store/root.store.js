@@ -1,14 +1,17 @@
-import { configure } from "mobx";
+import { configure } from 'mobx';
 
-import userStore from "./user.store";
+import UserStore from './user.store';
+import ChatStore from './chat.store';
 
-configure({ enforceActions: "always" });
+configure({ enforceActions: 'always' });
 
 class RootStore {
   userStore;
+  chatStore;
 
   constructor() {
-    this.userStore = new userStore(this);
+    this.userStore = new UserStore(this);
+    this.chatStore = new ChatStore(this);
   }
 }
 

@@ -1,2 +1,2 @@
-export * from "./logo.component";
-export * from "./logo.styled";
+export * from './logo.component';
+export * from './logo.styled';

@@ -1,6 +1,6 @@
-import { makeObservable, observable, action } from "mobx";
+import { makeObservable, observable, action } from 'mobx';
 
-import AuthService from "../services/auth.service";
+import AuthService from '../services/auth.service';
 
 class UserStore {
   rootStore;

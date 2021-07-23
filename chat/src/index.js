@@ -13,7 +13,7 @@ function sendMessages(socket) {
           const redisMessage = usernameMessage[1];
 
           socket.emit("message", {
-              from: redisUsername,
+              username: redisUsername,
               message: redisMessage
           });
       });
@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on("message", ({ username, message  }) => {
-    client.rpush("messages", `${from}:${message}`);
+    client.rpush("messages", `${username}:${message}`);
 
     io.emit("message", { username, message });
   });

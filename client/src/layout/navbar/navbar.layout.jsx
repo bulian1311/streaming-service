@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { observer } from "mobx-react-lite";
-import { useStore } from "../../hooks";
+import React, { useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../../hooks';
 
-import { Search } from "../search";
-import { Button, NavLink, Logo } from "../../components";
-import { SettingsIcon, LogoutIcon, LoginIcon } from "../../icons";
+import { Search } from '../search';
+import { Button, NavLink, Logo } from '../../components';
+import { SettingsIcon, LogoutIcon, LoginIcon } from '../../icons';
 
 import {
   Container,
@@ -17,7 +17,7 @@ import {
   UserSettingsLink,
   UserInfo,
   LinksGroup,
-} from "./";
+} from './';
 
 export const Navbar = observer(() => {
   const { userStore } = useStore();
@@ -51,18 +51,18 @@ export const Navbar = observer(() => {
             <UserSettings isVisible={isSettingsVisible}>
               <UserInfo>
                 <UserImg
-                  style={{ marginRight: "0.6rem" }}
+                  style={{ marginRight: '0.6rem' }}
                   src="http://localhost:4000/uploads/jam.jpg"
                 />
                 <span>{userStore.user && userStore.user.email}</span>
               </UserInfo>
               <LinksGroup>
                 <UserSettingsLink>
-                  <SettingsIcon style={{ marginRight: "0.6rem" }} />
+                  <SettingsIcon style={{ marginRight: '0.6rem' }} />
                   Настройки
                 </UserSettingsLink>
                 <UserSettingsLink onClick={logout}>
-                  <LogoutIcon style={{ marginRight: "0.6rem" }} />
+                  <LogoutIcon style={{ marginRight: '0.6rem' }} />
                   Выход
                 </UserSettingsLink>
               </LinksGroup>
@@ -70,7 +70,7 @@ export const Navbar = observer(() => {
           </UserContainer>
         ) : (
           <Button onClick={() => userStore.setIsFormVisible(true)} primary>
-            <LoginIcon style={{ marginRight: "0.6rem" }} />
+            <LoginIcon style={{ marginRight: '0.6rem' }} />
             Авторизация
           </Button>
         )}

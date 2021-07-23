@@ -1,1 +1,1 @@
-export * from "./icons.styled";
+export * from './icons.styled';

@@ -1,19 +1,42 @@
-import { makeObservable, observable, action } from "mobx";
+import io from 'socket.io-client';
+import { makeObservable, observable, action } from 'mobx';
 
 class ChatStore {
+  socket = null;
+
   messages = [];
 
   constructor(rootStore) {
     this.rootStore = rootStore;
-    
+    this.socket = io('localhost:4002', { withCredentials: true });
+
     makeObservable(this, {
       messages: observable,
-      setMessage: action
+      setMessage: action,
     });
   }
 
-  setMessage(message) {
-    this.messages.push(message);
+  setMessage(username, message) {
+    this.messages.push({ username, message });
+  }
+
+  sendMessage(username, message) {
+    this.socket.emit('message', { username, message });
+  }
+
+  listenMessage() {
+    this.socket.on('message', ({ username, message }) => {
+      this.setMessage(username, message);
+    });
+  }
+
+  joinRoom(username, room) {
+    this.socket.emit('join', { username, room }, () => {});
+  }
+
+  disconnectChat() {
+    this.socket.emit('disconect');
+    this.socket.off();
   }
 }
 

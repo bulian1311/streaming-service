@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   grid-area: navbar;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
-  grid-template-areas: "nleft nmid nright";
+  grid-template-areas: 'nleft nmid nright';
 `;
 
 export const Left = styled.div`
@@ -47,7 +47,7 @@ export const UserImg = styled.img`
 
 export const UserSettings = styled.div`
   position: absolute;
-  display: ${(props) => (props.isVisible ? "flex" : "none")};
+  display: ${(props) => (props.isVisible ? 'flex' : 'none')};
   flex-direction: column;
   background-color: var(--secondary-color);
   right: 0;

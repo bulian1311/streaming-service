@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { observer } from "mobx-react-lite";
-import { useStore } from "../../hooks";
+import React, { useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../../hooks';
 
-import { Modal, Tabs, Input, Button } from "../../components";
-import { Container, StyledForm } from "./auth.styled";
+import { Modal, Tabs, Input, Button } from '../../components';
+import { Container, StyledForm } from './auth.styled';
 
 export const Auth = observer(() => {
   const { userStore } = useStore();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [activeTab, setActiveTab] = useState("Войти");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [activeTab, setActiveTab] = useState('Войти');
 
   const login = async () => {
     await userStore.login(email, password);
@@ -29,11 +29,11 @@ export const Auth = observer(() => {
       <Container>
         <h3>Войти в приложение</h3>
         <Tabs
-          tabs={["Войти", "Регистрация"]}
+          tabs={['Войти', 'Регистрация']}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        {activeTab === "Войти" ? (
+        {activeTab === 'Войти' ? (
           <StyledForm>
             <Input
               value={email}
@@ -50,7 +50,7 @@ export const Auth = observer(() => {
             />
             <Button
               onClick={login}
-              style={{ marginTop: "1rem" }}
+              style={{ marginTop: '1rem' }}
               primary
               isLoading={userStore.isLoading}
               disabled={userStore.isLoading}
@@ -75,7 +75,7 @@ export const Auth = observer(() => {
             <Input type="password" label="Пароль еще раз" />
             <Button
               onClick={registration}
-              style={{ marginTop: "1rem" }}
+              style={{ marginTop: '1rem' }}
               primary
               isLoading={userStore.isLoading}
               disabled={userStore.isLoading}

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   grid-area: footer;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   grid-template-columns: 0.6fr 1.8fr 0.6fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
-  grid-template-areas: "fleft fmid fright";
+  grid-template-areas: 'fleft fmid fright';
   padding: 2rem 0;
 `;
 

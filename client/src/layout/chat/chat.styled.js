@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   grid-area: chat;
@@ -6,13 +6,13 @@ export const Container = styled.div`
   box-shadow: var(--shadow-light);
 
   display: grid;
-  grid-template-columns: ${(props) => (props.isVisible ? "20rem" : "4rem")};
+  grid-template-columns: ${(props) => (props.isVisible ? '20rem' : '4rem')};
   grid-template-rows: 4rem 2.4fr 0.3fr;
   gap: 0px 0px;
   grid-template-areas:
-    "chat-header"
-    "chat-body"
-    "chat-footer";
+    'chat-header'
+    'chat-body'
+    'chat-footer';
 `;
 
 export const ChatHeader = styled.div`
@@ -27,10 +27,9 @@ export const ChatHeader = styled.div`
 export const ChatBody = styled.div`
   grid-area: chat-body;
   padding: 0 1rem;
-  display: ${(props) => (props.isVisible ? "flex" : "none")};
+  display: ${(props) => (props.isVisible ? 'flex' : 'none')};
   overflow-y: auto;
   flex-direction: column;
-  flex-flow: column-reverse;
 `;
 
 export const ChatFooter = styled.div`
@@ -38,7 +37,7 @@ export const ChatFooter = styled.div`
   align-self: center;
   position: relative;
   align-self: center;
-  display: ${(props) => (props.isVisible ? "flex" : "none")};
+  display: ${(props) => (props.isVisible ? 'flex' : 'none')};
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;

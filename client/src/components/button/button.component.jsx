@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { LoadingIcon } from "../../icons";
-import { StyledButton } from "./";
+import { LoadingIcon } from '../../icons';
+import { StyledButton } from './';
 
 export const Button = ({ children, primary, isLoading, ...props }) => {
   return (

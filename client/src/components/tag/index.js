@@ -1,2 +1,2 @@
-export * from "./tag.component";
-export * from "./tag.styled";
+export * from './tag.component';
+export * from './tag.styled';

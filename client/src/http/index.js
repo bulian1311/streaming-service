@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const API_URL = `http://localhost:4000/auth`;
 
@@ -8,7 +8,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+  config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
   return config;
 });
 
@@ -28,7 +28,7 @@ api.interceptors.response.use(
         const res = await axios.get(`${API_URL}/refresh`, {
           withCredentials: true,
         });
-        localStorage.setItem("token", res.data.accessToken);
+        localStorage.setItem('token', res.data.accessToken);
         return api.request(originalRequest);
       } catch (err) {
         console.log(err.message);
@@ -36,7 +36,7 @@ api.interceptors.response.use(
     }
 
     throw error;
-  }
+  },
 );
 
 export default api;

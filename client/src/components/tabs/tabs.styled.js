@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -28,11 +28,11 @@ export const StyledLi = styled.li`
 export const StyledA = styled.a`
   align-items: center;
   border-bottom-color: ${(props) =>
-    props.isActive ? "var(--primary-color)" : "#dbdbdb"};
+    props.isActive ? 'var(--primary-color)' : '#dbdbdb'};
   border-bottom-style: solid;
   border-bottom-width: 1px;
   color: ${(props) =>
-    props.isActive ? "var(--primary-color)" : "var(--text-color)"};
+    props.isActive ? 'var(--primary-color)' : 'var(--text-color)'};
   display: flex;
   justify-content: center;
   margin-bottom: -1px;

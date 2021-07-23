@@ -1,2 +1,2 @@
-export * from "./input.component";
-export * from "./input.styled";
+export * from './input.component';
+export * from './input.styled';

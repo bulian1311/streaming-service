@@ -1,2 +1,2 @@
-export * from "./modal.component";
-export * from "./modal.styles";
+export * from './modal.component';
+export * from './modal.styles';

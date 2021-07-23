@@ -11,4 +11,4 @@ export const connectMongo = async () => {
     },
     () => console.log('Mongo connection success.'),
   );
-}
+};

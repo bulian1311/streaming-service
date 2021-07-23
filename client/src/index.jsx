@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import App from "./app/app.component";
-import reportWebVitals from "./reportWebVitals";
+import App from './app/app.component';
+import reportWebVitals from './reportWebVitals';
 
-import Store from "./store";
-import { GlobalStyle } from "./global.styled";
+import Store from './store';
+import { GlobalStyle } from './global.styled';
 
 const store = new Store();
 
@@ -21,7 +21,7 @@ ReactDOM.render(
       </Context.Provider>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

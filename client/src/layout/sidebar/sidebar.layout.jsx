@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { Tag } from "../../components";
+import { Tag } from '../../components';
 import {
   HomeIcon,
   SearchIcon,
   SmileIcon,
   RightArrowIcon,
   LeftArrowIcon,
-} from "../../icons";
+} from '../../icons';
 import {
   Container,
   SidebarHeader,
@@ -15,7 +15,7 @@ import {
   SidebarTwo,
   LinksGroup,
   SidebarLink,
-} from "./";
+} from './';
 
 export const Sidebar = () => {
   const [isVisible, setIsVisible] = useState(true);

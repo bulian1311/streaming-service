@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { StyledInput, StyledLabel, InputGroup } from "./input.styled";
+import { StyledInput, StyledLabel, InputGroup } from './input.styled';
 
 export const Input = ({ label, ...otherProps }) => {
   return (

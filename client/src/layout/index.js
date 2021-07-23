@@ -1,2 +1,2 @@
-export * from "./layout.component";
-export * from "./layout.styled";
+export * from './layout.component';
+export * from './layout.styled';

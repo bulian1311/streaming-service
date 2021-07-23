@@ -1,36 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { observer } from "mobx-react-lite";
-import io from 'socket.io-client';
+import React, { useState, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 
-import { useStore } from "../../hooks";
-import { Tag, Input } from "../../components";
+import { useStore } from '../../hooks';
+import { Tag, Input } from '../../components';
 
 import {
   RightArrowIcon,
   LeftArrowIcon,
   UsersIcon,
   SmileIcon,
-} from "../../icons";
-import { Container, ChatHeader, ChatBody, ChatFooter, StyledMessage } from "./";
-
-let socket;
+} from '../../icons';
+import { Container, ChatHeader, ChatBody, ChatFooter, StyledMessage } from './';
 
 export const Chat = observer(() => {
-  const { userStore } = useStore();
+  const { userStore, chatStore } = useStore();
+  const [message, setMessage] = useState('');
   const [isVisible, setIsVisible] = useState(true);
 
-  const [name, setName] = useState('testName');
-  const [room, setRoom] = useState('testRoom');
-
   useEffect(() => {
-    socket = io('localhost:4002', { withCredentials: true });
-    socket.emit('join', {name, room}, () => {});
+    chatStore.listenMessage();
 
     return () => {
-      socket.emit('disconect');
-      socket.off();
+      chatStore.disconnectChat();
+    };
+  }, [chatStore]);
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      chatStore.sendMessage('User', message);
+      setMessage('');
     }
-  }, []);
+  };
 
   return (
     <Container isVisible={isVisible}>
@@ -53,52 +53,22 @@ export const Chat = observer(() => {
       )}
 
       <ChatBody isVisible={isVisible}>
-        <StyledMessage>
-          User: Message one one one one oneone oneone oneone
-        </StyledMessage>
-        <StyledMessage>User: Message two</StyledMessage>
-        <StyledMessage>User: Message three</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
-        <StyledMessage>User: message message message</StyledMessage>
+        {chatStore.messages.map(({ username, message }, i) => (
+          <StyledMessage key={i}>
+            {username}: {message}
+          </StyledMessage>
+        ))}
       </ChatBody>
       <ChatFooter isVisible={isVisible}>
-        <Tag style={{ marginRight: "0.5rem" }}>
+        <Tag style={{ marginRight: '0.5rem' }}>
           <SmileIcon />
         </Tag>
-        <Input disabled={!userStore.isAuth} />
+        <Input
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyPress={handleKeyPress}
+          disabled={!userStore.isAuth}
+        />
       </ChatFooter>
     </Container>
   );

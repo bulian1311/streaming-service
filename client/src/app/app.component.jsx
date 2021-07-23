@@ -1,17 +1,17 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import { observer } from "mobx-react-lite";
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
-import { Layout } from "../layout";
-import { HomePage } from "../pages";
+import { Layout } from '../layout';
+import { HomePage } from '../pages';
 
-import { useStore } from "../hooks";
+import { useStore } from '../hooks';
 
 const App = () => {
   const { userStore } = useStore();
 
   React.useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem('token')) {
       userStore.checkAuth();
     }
   }, [userStore]);

@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledButton = styled.a`
-  background: ${(props) => (props.primary ? "var(--primary-color)" : "none")};
+  background: ${(props) => (props.primary ? 'var(--primary-color)' : 'none')};
   border: 1px solid var(--primary-color);
   padding: 0.75rem;
   border-radius: 4px;
@@ -14,8 +14,8 @@ export const StyledButton = styled.a`
   align-items: center;
 
   :hover {
-    background: ${(props) => (props.primary ? "none" : "var(--primary-color)")};
+    background: ${(props) => (props.primary ? 'none' : 'var(--primary-color)')};
   }
 
-  ${(props) => props.disabled && "pointer-events: none;"}
+  ${(props) => props.disabled && 'pointer-events: none;'}
 `;

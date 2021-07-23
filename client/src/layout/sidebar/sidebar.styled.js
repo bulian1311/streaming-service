@@ -1,17 +1,17 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   grid-area: sidebar;
   box-shadow: var(--shadow-light);
 
   display: grid;
-  grid-template-columns: ${(props) => (props.isVisible ? "12rem" : "4rem")};
+  grid-template-columns: ${(props) => (props.isVisible ? '12rem' : '4rem')};
   grid-template-rows: 4rem 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    "sidebar-header"
-    "sidebar-one"
-    "sidebar-two";
+    'sidebar-header'
+    'sidebar-one'
+    'sidebar-two';
 `;
 
 export const SidebarHeader = styled.div`
@@ -25,12 +25,12 @@ export const SidebarHeader = styled.div`
 
 export const SidebarOne = styled.div`
   grid-area: sidebar-one;
-  display: ${(props) => (props.isVisible ? "block" : "none")};
+  display: ${(props) => (props.isVisible ? 'block' : 'none')};
 `;
 
 export const SidebarTwo = styled.div`
   grid-area: sidebar-two;
-  ${(props) => (props.isVisible ? "block" : "none")}
+  ${(props) => (props.isVisible ? 'block' : 'none')}
 `;
 
 export const LinksGroup = styled.div`
