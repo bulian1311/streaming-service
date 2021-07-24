@@ -1,18 +1,22 @@
 import axios from 'axios';
-import api from '../http';
+import { authApi } from '../http';
 import { API_URL } from '../http';
 
-export default class AuthService {
+export class AuthService {
   static async login(email, password) {
-    const res = await api.post('/login', { email, password });
+    const res = await authApi.post('/login', { email, password });
 
     localStorage.setItem('token', res.data.accessToken);
 
     return res.data.user;
   }
 
-  static async registration(email, password) {
-    const res = await api.post('/registration', { email, password });
+  static async registration(username, email, password) {
+    const res = await authApi.post('/registration', {
+      username,
+      email,
+      password,
+    });
 
     localStorage.setItem('token', res.data.accessToken);
 
@@ -20,7 +24,7 @@ export default class AuthService {
   }
 
   static async logout() {
-    const res = await api.post('/logout');
+    const res = await authApi.post('/logout');
 
     localStorage.removeItem('token');
 

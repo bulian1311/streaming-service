@@ -7,6 +7,7 @@ import { Container, StyledForm } from './auth.styled';
 
 export const Auth = observer(() => {
   const { userStore } = useStore();
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [activeTab, setActiveTab] = useState('Войти');
@@ -17,7 +18,7 @@ export const Auth = observer(() => {
   };
 
   const registration = async () => {
-    await userStore.registration(email, password);
+    await userStore.registration(username, email, password);
     userStore.setIsFormVisible(false);
   };
 
@@ -36,6 +37,7 @@ export const Auth = observer(() => {
         {activeTab === 'Войти' ? (
           <StyledForm>
             <Input
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               label="Email пользователя"
@@ -43,6 +45,7 @@ export const Auth = observer(() => {
               autocomplete="on"
             />
             <Input
+              required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               label="Пароль"
@@ -61,12 +64,21 @@ export const Auth = observer(() => {
         ) : (
           <StyledForm>
             <Input
+              required
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              label="Имя пользователя"
+            />
+            <Input
+              required
               value={email}
               type="email"
               onChange={(e) => setEmail(e.target.value)}
               label="Email пользователя"
             />
             <Input
+              required
               value={password}
               type="password"
               onChange={(e) => setPassword(e.target.value)}

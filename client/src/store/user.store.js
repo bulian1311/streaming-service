@@ -1,6 +1,6 @@
 import { makeObservable, observable, action } from 'mobx';
 
-import AuthService from '../services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 class UserStore {
   rootStore;
@@ -56,10 +56,10 @@ class UserStore {
     }
   }
 
-  async registration(email, password) {
+  async registration(username, email, password) {
     try {
       this.setIsLoading(true);
-      const user = await AuthService.registration(email, password);
+      const user = await AuthService.registration(username, email, password);
 
       console.log(user);
 

@@ -19,7 +19,7 @@ nms.on('prePublish', async (id, StreamPath, args) => {
   }
 
   console.log(
-    '[NodeEvent on prePublish]',
+    'qqq -- [NodeEvent on prePublish]',
     `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`,
   );
 });
@@ -29,4 +29,4 @@ const getStreamKeyFromStreamPath = (path) => {
   return parts[parts.length];
 };
 
-export default nms;
+nms.run();

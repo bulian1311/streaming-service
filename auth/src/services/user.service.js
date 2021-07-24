@@ -8,12 +8,12 @@ import UserDto from '../dtos/user.dto.js';
 import ApiError from '../errors/api.error.js';
 
 class UserService {
-  async registration(email, password) {
-    const existUser = await userModel.findOne({ email });
+  async registration(username, email, password) {
+    const existUser = await userModel.findOne({ $or: [{email}, {username}] });
 
     if (existUser) {
       throw ApiError.BadRequest(
-        `Пользователь с таким адресом ${email} уже существует.`,
+        `Пользователь с таким именем или email уже существует.`,
       );
     }
 
@@ -22,6 +22,7 @@ class UserService {
     const streamKey = nanoid();
 
     const user = await userModel.create({
+      username,
       email,
       password: hashPassword,
       activationLink,

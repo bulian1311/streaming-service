@@ -1,9 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { observer } from 'mobx-react-lite';
 
 import { Layout } from '../layout';
-import { HomePage } from '../pages';
+import { HomePage, TranslationPage } from '../pages';
 
 import { useStore } from '../hooks';
 
@@ -22,9 +21,12 @@ const App = () => {
         <Route exact path="/">
           <HomePage />
         </Route>
+        <Route path="/stream/:username">
+          <TranslationPage />
+        </Route>
       </Switch>
     </Layout>
   );
 };
 
-export default observer(App);
+export default App;

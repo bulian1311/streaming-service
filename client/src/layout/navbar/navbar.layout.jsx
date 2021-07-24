@@ -54,7 +54,7 @@ export const Navbar = observer(() => {
                   style={{ marginRight: '0.6rem' }}
                   src="http://localhost:4000/uploads/jam.jpg"
                 />
-                <span>{userStore.user && userStore.user.email}</span>
+                <span>{userStore.user && userStore.user.username}</span>
               </UserInfo>
               <LinksGroup>
                 <UserSettingsLink>
