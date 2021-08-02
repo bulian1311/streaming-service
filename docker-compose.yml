@@ -19,3 +19,39 @@ services:
     restart: unless-stopped
     ports:
       - 6379:6379
+
+  client:
+    build: ./client
+    container_name: client
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    depends_on:
+      - auth
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./client/src:/app/src
+    command: npm run dev     
+
+  auth:
+    build: ./auth
+    container_name: auth
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    ports:
+      - 4000:4000
+    environment:
+      - PORT=4000
+      - API_URL=http://localhost:4001
+      - CLIENT_URL=http://localhost:3000
+      - MONGO_URL=mongodb://admin:admin@mongo:27017/admin
+      - JWT_ACCESS_SECRET=jwt-access-secret
+      - JWT_REFRESH_SECRET=jwt-refresh-secret
+    volumes: 
+      - ./auth/src:/app/src
+    command: npm run dev

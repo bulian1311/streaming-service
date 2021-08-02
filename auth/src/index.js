@@ -1,6 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 import { connectMongo } from './mongoose.js';
 
 import express from 'express';
