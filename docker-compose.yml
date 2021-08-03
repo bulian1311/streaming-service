@@ -1,5 +1,15 @@
 version: '3'
 services:
+  haproxy:
+    image: haproxy:alpine
+    container_name: haproxy
+    depends_on:
+      - client
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy
+
   mongo:
     image: mongo:4.4.4
     container_name: mongo
@@ -28,8 +38,8 @@ services:
     tty: true
     depends_on:
       - auth
-    ports:
-      - 3000:3000
+    # ports:
+    #   - 3000:3000
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
@@ -43,8 +53,8 @@ services:
     restart: unless-stopped
     depends_on:
       - mongo
-    ports:
-      - 4000:4000
+    # ports:
+    #   - 4000:4000
     environment:
       - PORT=4000
       - API_URL=http://localhost:4001
