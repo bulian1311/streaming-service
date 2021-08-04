@@ -19,14 +19,14 @@ app.use(
   }),
 );
 
-app.use('/uploads', express.static('uploads'));
+app.use('/auth/uploads', express.static('uploads'));
 
 app.use(router);
 
 app.use(errorMiddleware);
 
 const start = async () => {
-  const { PORT = 6000 } = process.env;
+  const { PORT = 4000 } = process.env;
   try {
     await connectMongo();
     app.listen(PORT, () => console.log(`App listening on ${PORT}!`));

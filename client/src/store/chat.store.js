@@ -8,7 +8,8 @@ class ChatStore {
 
   constructor(rootStore) {
     this.rootStore = rootStore;
-    this.socket = io('localhost:4002', { withCredentials: true });
+    this.socket = io('localhost:8080', { withCredentials: true });
+    console.log('ws__qqqqqqqq');
 
     makeObservable(this, {
       messages: observable,

@@ -3,29 +3,24 @@ import { Server as SocketServer } from "socket.io";
 import redis from "redis";
 
 const server = createServer();
-const client = redis.createClient();
+const client = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_URL);
 
 function sendMessages(socket) {
   client.lrange("messages", "0", "-1", (err, data) => {
-      data.map(x => {
-          const usernameMessage = x.split(":");
-          const redisUsername = usernameMessage[0];
-          const redisMessage = usernameMessage[1];
+    data.map(x => {
+      const usernameMessage = x.split(":");
+      const redisUsername = usernameMessage[0];
+      const redisMessage = usernameMessage[1];
 
-          socket.emit("message", {
-              username: redisUsername,
-              message: redisMessage
-          });
+      socket.emit("message", {
+        username: redisUsername,
+        message: redisMessage
       });
+    });
   });
 }
 
-const io = new SocketServer(server, {
-  cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
-    credentials: true
-  }
-});
+const io = new SocketServer(server);
 
 io.on('connection', (socket) => {
   console.log("New connection");

@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "format": "prettier --write \"**/*.js\"",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon"
   },
   "author": "",
   "license": "ISC",

@@ -17,18 +17,18 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
-    ports:
-      - 27017:27017
+    # ports:
+    #   - 27017:27017
     volumes:
       - ../mongo-data-4.4:/data/db
-    command: --wiredTigerCacheSizeGB 1.5
+    command: mongod --quiet --logpath /dev/null
     
   redis: 
     image: redis:alpine
     container_name: redis
     restart: unless-stopped
-    ports:
-      - 6379:6379
+    # ports:
+    #   - 6379:6379
 
   client:
     build: ./client
@@ -65,3 +65,18 @@ services:
     volumes: 
       - ./auth/src:/app/src
     command: npm run dev
+
+  chat_1:
+    build: ./chat
+    container_name: chat_1
+    restart: unless-stopped
+    depends_on:
+      - redis
+    environment:
+      - PORT=4002
+      - REDIS_URL=redis
+      - REDIS_PORT=6379
+    volumes:
+      - ./chat/src:/app/src
+    command: npm run dev
+
