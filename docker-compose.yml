@@ -73,10 +73,21 @@ services:
     depends_on:
       - redis
     environment:
-      - PORT=4002
+      - PORT=4000
       - REDIS_URL=redis
       - REDIS_PORT=6379
     volumes:
       - ./chat/src:/app/src
     command: npm run dev
 
+  video_1:
+    build: ./video
+    container_name: video_1
+    restart: unless-stopped
+    ports:
+      - 4000:4000
+    environment:
+      - PORT=4000
+    volumes:
+      - ./video/src:/app/src
+    command: npm run dev  

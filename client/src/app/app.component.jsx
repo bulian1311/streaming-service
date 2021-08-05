@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { Layout } from '../layout';
-import { HomePage, TranslationPage } from '../pages';
+import { HomePage, RoomPage } from '../pages';
 
 import { useStore } from '../hooks';
 
@@ -21,8 +21,8 @@ const App = () => {
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route path="/stream/:username">
-          <TranslationPage />
+        <Route path="/room/:username">
+          <RoomPage />
         </Route>
       </Switch>
     </Layout>

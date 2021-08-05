@@ -1,6 +1,5 @@
 import { makeObservable, observable, action } from 'mobx';
 import { StreamService } from '../services';
-import { UserService } from '../services';
 
 class StreamStore {
   rootStore;
@@ -35,7 +34,7 @@ class StreamStore {
   }
 
   async getVideoStream(streamKey) {
-    const user = await UserService.getUserByStreamKey(streamKey);
+   
   }
 }
 
