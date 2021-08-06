@@ -1,11 +1,11 @@
 import React from 'react';
-import { VideoPlayer } from '../../components';
+import { HlsPlayer } from '../../components';
 
 export const RoomPage = () => {
   return (
     <div>
       <p>Room</p>
-      <VideoPlayer />
+      <HlsPlayer />
     </div>
   );
 };
