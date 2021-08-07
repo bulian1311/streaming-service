@@ -11,6 +11,9 @@ import { ReactComponent as LoadingSvg } from './loading.svg';
 import { ReactComponent as SettingsSvg } from './settings.svg';
 import { ReactComponent as LogoutSvg } from './logout.svg';
 import { ReactComponent as LoginSvg } from './login.svg';
+import { ReactComponent as VolumeSvg } from './volume.svg';
+import { ReactComponent as MuteSvg } from './mute.svg';
+import { ReactComponent as FullScreenSvg } from './full-screen.svg';
 
 const mixin = css`
   width: 1rem;
@@ -59,5 +62,17 @@ export const LogoutIcon = styled(LogoutSvg)`
 `;
 
 export const LoginIcon = styled(LoginSvg)`
+  ${mixin}
+`;
+
+export const VolumeIcon = styled(VolumeSvg)`
+  ${mixin}
+`;
+
+export const MuteIcon = styled(MuteSvg)`
+  ${mixin}
+`;
+
+export const FullScreenIcon = styled(FullScreenSvg)`
   ${mixin}
 `;
