@@ -1,2 +1,2 @@
-export * from "./hls-player.component"
-export * from "./hls-player.syled"
+export * from './hls-player.component';
+export * from './hls-player.syled';

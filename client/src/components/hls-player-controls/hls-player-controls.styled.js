@@ -16,7 +16,7 @@ export const StyledRange = styled.input`
     background: var(--text-color);
     border-radius: 5px;
   }
-  
+
   /* ::-moz-range-track {
     height: 5px;
   }

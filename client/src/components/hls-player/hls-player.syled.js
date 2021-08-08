@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-export const StyledVideo = styled.video`
+export const VideoContainer = styled.figure`
   width: 100%;
 `;
 
+export const StyledVideo = styled.video`
+  width: 100%;
+`;

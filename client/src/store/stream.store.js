@@ -33,9 +33,7 @@ class StreamStore {
     this.setLiveStreams(streams);
   }
 
-  async getVideoStream(streamKey) {
-   
-  }
+  async getVideoStream(streamKey) {}
 }
 
 export default StreamStore;

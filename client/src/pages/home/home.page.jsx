@@ -7,11 +7,13 @@ export const HomePage = () => {
     controls: true,
     responsive: true,
     fluid: true,
-    sources: [{
-      src: '/videos/output.m3u8',
-      type: 'application/x-mpegURL'
-    }]
-  }
+    sources: [
+      {
+        src: '/videos/output.m3u8',
+        type: 'application/x-mpegURL',
+      },
+    ],
+  };
 
   return (
     <div>
