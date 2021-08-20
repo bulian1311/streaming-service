@@ -2,7 +2,7 @@ import { connectMongo } from './mongoose.js';
 
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import cors from 'cors';
+//import cors from 'cors';
 
 import router from './router/index.js';
 import errorMiddleware from './middlewares/error.middleware.js';
@@ -12,12 +12,12 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    credentials: true,
-    origin: process.env.CLIENT_URL,
-  }),
-);
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: process.env.CLIENT_URL,
+//   }),
+// );
 
 app.use('/auth/uploads', express.static('uploads'));
 
