@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 0.4rem 0.6rem;
-  background-color: var(--secondary-color);
+  background-color: ${props => props.isActive ? 'var(--primary-color)' : 'var(--secondary-color);'};
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -10,6 +10,6 @@ export const Container = styled.div`
   cursor: pointer;
 
   :hover {
-    background-color: var(--primary-color);
+    background-color: ${props => props.isActive ? 'var(--secondary-color);' : 'var(--primary-color)'};
   }
 `;

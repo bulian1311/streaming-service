@@ -2,9 +2,9 @@ import { createServer } from "http";
 import { Server as SocketServer } from "socket.io";
 import redis from "redis";
 
-import { connectMongo } from "./helpers/index.js";
+// import { connectMongo } from "./helpers/index.js";
 
-connectMongo();
+// connectMongo();
 const server = createServer();
 const client = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_URL);
 
@@ -21,9 +21,10 @@ io.on('connection', (socket) => {
 
     client.sadd(`users:${roomId}`, username);
 
-    const users = client.smembers(`users:${roomId}`);
-    console.log(username, roomId, users);
-    socket.broadcast.to(roomId).emit('roomData', { users });
+    client.smembers(`users:${roomId}`, (err, users) => {
+      console.log(users);
+      io.to(roomId).emit('roomData', { users });
+    });
 
     callback();
   });
@@ -31,17 +32,16 @@ io.on('connection', (socket) => {
   socket.on("message", ({ username, message, roomId  }) => {
     //client.rpush(`messages:${roomId}`, `${username}:${message}`);
 
-    socket.broadcast.to(roomId).emit('message', { username, message });
+    io.to(roomId).emit('message', { username, message });
   });
 
   socket.on("disconect", ({username, roomId}) => {
     const message = `${username} has left.`;
-    console.log(message);
-    socket.broadcast.to(roomId).emit('message', { username: 'bot', message });
+    io.to(roomId).emit('message', { username: 'bot', message });
 
     client.srem(`users:${roomId}`, username);
     const users = client.smembers(`users:${roomId}`);
-    socket.broadcast.to(roomId).emit('roomData', { users });
+    io.to(roomId).emit('roomData', { users });
   })
 });
 

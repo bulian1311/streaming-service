@@ -4,6 +4,8 @@ import { observer } from 'mobx-react-lite';
 import { useStore } from '../../hooks';
 import { Tag, Input } from '../../components';
 
+import io from 'socket.io-client';
+
 import {
   RightArrowIcon,
   LeftArrowIcon,
@@ -12,24 +14,66 @@ import {
 } from '../../icons';
 import { Container, ChatHeader, ChatBody, ChatFooter, StyledMessage } from './';
 
+let socket;
+
 export const Chat = observer(() => {
-  const { userStore, chatStore } = useStore();
+  const { userStore } = useStore();
+  const [username, setUsername] = useState('User');
+  const [users, setUsers] = useState('');
+  const [roomId, setRoomId] = useState('main');
   const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([]);
   const [isVisible, setIsVisible] = useState(true);
+  const [isRoomInfo, setIsRoomInfo] = useState(false);
 
   useEffect(() => {
-    chatStore.listenMessage();
+    socket = io('localhost:8080', { withCredentials: true });
+
+    socket.emit('join', { username, roomId }, (err) => {
+      if(err) {
+        alert(err.message);
+      }
+    });
 
     return () => {
-      chatStore.disconnectChat();
+      socket.emit('disconect', {username, roomId});
+      socket.off();
     };
-  }, [chatStore]);
+    
+  }, []);
+
+  useEffect(() => {
+    console.log('qqqq');
+    socket.on('message', message => {
+      setMessages(messages => [ ...messages, message ]);
+    });
+    
+    socket.on("roomData", ({ users }) => {
+      setUsers(users);
+    });
+}, []);
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      chatStore.sendMessage('User', message);
+    if (message && e.key === 'Enter') {
+      socket.emit('message', {username, message, roomId});
       setMessage('');
     }
+  };
+
+  const renderMessages = () => {
+    return messages.map(({ username, message }, i) => (
+      <StyledMessage key={i}>
+        {username}: {message}
+      </StyledMessage>
+    ))
+  };
+
+  const renderUsers = () => {
+    return users.map((username) => (
+      <StyledMessage key={username}>
+        {username}
+      </StyledMessage>
+    ))
   };
 
   return (
@@ -40,7 +84,7 @@ export const Chat = observer(() => {
             <RightArrowIcon />
           </Tag>
           <h4>Чат трансляции</h4>
-          <Tag>
+          <Tag isActive={isRoomInfo} onClick={() => setIsRoomInfo(!isRoomInfo)}>
             <UsersIcon />
           </Tag>
         </ChatHeader>
@@ -53,11 +97,7 @@ export const Chat = observer(() => {
       )}
 
       <ChatBody isVisible={isVisible}>
-        {chatStore.messages.map(({ username, message }, i) => (
-          <StyledMessage key={i}>
-            {username}: {message}
-          </StyledMessage>
-        ))}
+        {isRoomInfo ? renderUsers() : renderMessages()}
       </ChatBody>
       <ChatFooter isVisible={isVisible}>
         <Tag style={{ marginRight: '0.5rem' }}>

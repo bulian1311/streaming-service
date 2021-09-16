@@ -28,12 +28,12 @@ new hls(server, {
             });
         },
         getManifestStream: (req, cb) => {
-            console.log(__dirname + req.url);
+            //console.log(__dirname + req.url);
             const stream = fs.createReadStream(__dirname + req.url);
             cb(null, stream);
         },
         getSegmentStream: (req, cb) => {
-            console.log(__dirname + req.url);
+            //console.log(__dirname + req.url);
             const stream = fs.createReadStream(__dirname + req.url);
             cb(null, stream);
         }
