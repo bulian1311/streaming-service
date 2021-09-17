@@ -80,17 +80,17 @@ export const Chat = observer(() => {
     <Container isVisible={isVisible}>
       {isVisible ? (
         <ChatHeader>
-          <Tag onClick={() => setIsVisible(false)}>
+          <Tag title="свернуть" onClick={() => setIsVisible(false)}>
             <RightArrowIcon />
           </Tag>
           <h4>Чат трансляции</h4>
-          <Tag isActive={isRoomInfo} onClick={() => setIsRoomInfo(!isRoomInfo)}>
+          <Tag title="пользователи чата" isActive={isRoomInfo} onClick={() => setIsRoomInfo(!isRoomInfo)}>
             <UsersIcon />
           </Tag>
         </ChatHeader>
       ) : (
         <ChatHeader>
-          <Tag onClick={() => setIsVisible(true)}>
+          <Tag title="развернуть" onClick={() => setIsVisible(true)}>
             <LeftArrowIcon />
           </Tag>
         </ChatHeader>
@@ -100,7 +100,7 @@ export const Chat = observer(() => {
         {isRoomInfo ? renderUsers() : renderMessages()}
       </ChatBody>
       <ChatFooter isVisible={isVisible}>
-        <Tag style={{ marginRight: '0.5rem' }}>
+        <Tag title="смайлики" style={{ marginRight: '0.5rem' }}>
           <SmileIcon />
         </Tag>
         <Input

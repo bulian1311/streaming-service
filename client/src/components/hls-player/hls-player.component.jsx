@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import Hls from 'hls.js';
 
-import { HlsPlayerControls } from '../';
+import { HlsPlayerControls } from './hls-player-controls';
 import { StyledVideo, VideoContainer } from './hls-player.syled';
 
 export const HlsPlayer = () => {

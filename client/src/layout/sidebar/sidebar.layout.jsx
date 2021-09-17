@@ -25,13 +25,13 @@ export const Sidebar = () => {
       {isVisible ? (
         <SidebarHeader>
           <h4>Заголовок</h4>
-          <Tag onClick={() => setIsVisible(false)}>
+          <Tag title="свернуть" onClick={() => setIsVisible(false)}>
             <LeftArrowIcon />
           </Tag>
         </SidebarHeader>
       ) : (
         <SidebarHeader>
-          <Tag onClick={() => setIsVisible(true)}>
+          <Tag title="развернуть" onClick={() => setIsVisible(true)}>
             <RightArrowIcon />
           </Tag>
         </SidebarHeader>

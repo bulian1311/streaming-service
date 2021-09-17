@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { Tag } from '../';
-import { VolumeIcon, MuteIcon, FullScreenIcon } from '../../icons';
+import { Tag } from '../../';
+import { VolumeIcon, MuteIcon, FullScreenIcon } from '../../../icons';
 import { StyledControls, StyledRange } from './hls-player-controls.styled';
 
 export const HlsPlayerControls = ({
