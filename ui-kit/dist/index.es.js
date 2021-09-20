@@ -10,3 +10,4 @@ const Requirements = () => {
 };
 
 export { Requirements };
+//# sourceMappingURL=index.es.js.map

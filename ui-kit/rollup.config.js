@@ -5,18 +5,23 @@ import external from 'rollup-plugin-peer-deps-external';
 import url from 'rollup-plugin-url';
 import svgr from '@svgr/rollup';
 
+import pkg from './package.json';
+
 export default [{
   input: 'src/index.js',
   
   output: [
     {
-      file: 'dist/index.js',
-      format: 'cjs'
+      file: pkg.main,
+      format: 'cjs',
+      exports: 'named',
+      sourcemap: true
     },
     {
-      file: 'dist/index.es.js',
+      file: pkg.module,
       format: 'es',
-      exports: 'named'
+      exports: 'named',
+      sourcemap: true
     }
   ],
   plugins: [
