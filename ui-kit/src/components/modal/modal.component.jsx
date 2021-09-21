@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { Tag } from '../../components';
+import { Tag } from '../tag';
 import { CancelIcon } from '../../icons';
-import { Container, ModalBody } from './modal.styles';
+import { ModalContainer, ModalBody } from './modal.styles';
 
 export const Modal = ({ children, isVisible, setIsVisible, ...otherProps }) => {
   if (!isVisible) return '';
 
   return (
-    <Container {...otherProps}>
+    <ModalContainer {...otherProps}>
       <ModalBody>
         <Tag
           onClick={() => setIsVisible(false)}
@@ -18,6 +18,6 @@ export const Modal = ({ children, isVisible, setIsVisible, ...otherProps }) => {
         </Tag>
         {children}
       </ModalBody>
-    </Container>
+    </ModalContainer>
   );
 };

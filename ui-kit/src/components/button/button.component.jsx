@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { LoadingIcon } from '../../icons';
-import { StyledButton } from './';
+import { StyledButton } from './button.styled';
 
-export const Button = ({ children, primary, isLoading, ...props }) => {
+export const Button = ({ children, reverse, isLoading, ...props }) => {
   return (
-    <StyledButton primary={primary} {...props}>
+    <StyledButton reverse={reverse} {...props}>
       {isLoading ? <LoadingIcon /> : children}
     </StyledButton>
   );

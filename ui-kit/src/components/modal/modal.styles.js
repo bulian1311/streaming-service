@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+import { textColor, secondaryColor } from '../../theme/main.colors';
+
+export const ModalContainer = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -15,8 +17,8 @@ export const Container = styled.div`
 
 export const ModalBody = styled.div`
   padding: 1.5rem;
-  color: var(--text-color);
-  background-color: var(--secondary-color);
+  color: ${textColor};
+  background-color: ${secondaryColor};
   border-radius: 4px;
   position: relative;
 `;

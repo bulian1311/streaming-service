@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { primaryColor, textColor } from '../../theme/main.colors';
+
 export const Container = styled.div`
   display: flex;
   align-items: stretch;
@@ -28,11 +30,10 @@ export const StyledLi = styled.li`
 export const StyledA = styled.a`
   align-items: center;
   border-bottom-color: ${(props) =>
-    props.isActive ? 'var(--primary-color)' : '#dbdbdb'};
+    props.isActive ? primaryColor : '#dbdbdb'};
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  color: ${(props) =>
-    props.isActive ? 'var(--primary-color)' : 'var(--text-color)'};
+  color: ${(props) => (props.isActive ? primaryColor : textColor)};
   display: flex;
   justify-content: center;
   margin-bottom: -1px;
