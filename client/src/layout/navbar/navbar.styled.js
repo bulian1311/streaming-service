@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { Colors } from 'bulian-ui';
 
 export const Container = styled.div`
   grid-area: navbar;
-  box-shadow: var(--shadow-light);
+  box-shadow: ${Colors.shadowLightColor};
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -49,7 +50,7 @@ export const UserSettings = styled.div`
   position: absolute;
   display: ${(props) => (props.isVisible ? 'flex' : 'none')};
   flex-direction: column;
-  background-color: var(--secondary-color);
+  background-color: ${Colors.secondaryColor};
   right: 0;
   border-radius: 4px;
   overflow: hidden;
@@ -69,11 +70,11 @@ export const LinksGroup = styled.div`
 
 export const UserSettingsLink = styled.a`
   padding: 0.6rem;
-  color: var(--text-color);
+  color: ${Colors.textColor};
   cursor: pointer;
   border-radius: 4px;
 
   :hover {
-    background-color: var(--primary-color);
+    background-color: ${Colors.primaryColor};
   }
 `;

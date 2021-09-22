@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colors } from 'bulian-ui';
 
 export const StyledControls = styled.div`
   width: 100%;
@@ -32,6 +33,6 @@ export const StyledRange = styled.input`
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -4px;
-    background: var(--text-color);
+    background: ${Colors.textColor};
   }
 `;

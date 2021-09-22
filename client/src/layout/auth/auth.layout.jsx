@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../../hooks';
 
-import { Modal, Tabs, Input, Button } from '../../components';
+import { Modal, Tabs, Input, Button } from 'bulian-ui';
 import { Container, StyledForm } from './auth.styled';
 
 export const Auth = observer(() => {
@@ -42,7 +42,6 @@ export const Auth = observer(() => {
               onChange={(e) => setEmail(e.target.value)}
               label="Email пользователя"
               type="email"
-              autocomplete="on"
             />
             <Input
               required

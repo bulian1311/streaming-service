@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { Colors } from 'bulian-ui';
 import { ReactComponent as Icon } from './video.svg';
 
 export const LogoWrapper = styled.span`
@@ -7,12 +7,12 @@ export const LogoWrapper = styled.span`
   align-items: center;
   font-weight: 700;
   font-size: 1.5rem;
-  color: var(--primary-color);
+  color: ${Colors.primaryColor};
   margin-right: 1rem;
 `;
 
 export const LogoIcon = styled(Icon)`
-  fill: var(--primary-color);
+  fill: ${Colors.primaryColor};
   width: 50px;
   height: 50px;
   margin-right: 0.5rem;

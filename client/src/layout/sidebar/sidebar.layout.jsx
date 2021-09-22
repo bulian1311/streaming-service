@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 
-import { Tag } from '../../components';
-import {
-  HomeIcon,
-  SearchIcon,
-  SmileIcon,
-  RightArrowIcon,
-  LeftArrowIcon,
-} from '../../icons';
+import { Tag, Icons } from 'bulian-ui';
+
 import {
   Container,
   SidebarHeader,
@@ -15,7 +9,7 @@ import {
   SidebarTwo,
   LinksGroup,
   SidebarLink,
-} from './';
+} from './sidebar.styled';
 
 export const Sidebar = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -26,13 +20,13 @@ export const Sidebar = () => {
         <SidebarHeader>
           <h4>Заголовок</h4>
           <Tag title="свернуть" onClick={() => setIsVisible(false)}>
-            <LeftArrowIcon />
+            <Icons.LeftArrowIcon />
           </Tag>
         </SidebarHeader>
       ) : (
         <SidebarHeader>
           <Tag title="развернуть" onClick={() => setIsVisible(true)}>
-            <RightArrowIcon />
+            <Icons.RightArrowIcon />
           </Tag>
         </SidebarHeader>
       )}
@@ -40,15 +34,15 @@ export const Sidebar = () => {
       <SidebarOne isVisible={isVisible}>
         <LinksGroup>
           <SidebarLink>
-            <HomeIcon style={{ marginRight: 8 }} />
+            <Icons.HomeIcon style={{ marginRight: 8 }} />
             Ссылка
           </SidebarLink>
           <SidebarLink>
-            <SearchIcon style={{ marginRight: 8 }} />
+            <Icons.SearchIcon style={{ marginRight: 8 }} />
             Ссылка
           </SidebarLink>
           <SidebarLink>
-            <SmileIcon style={{ marginRight: 8 }} />
+            <Icons.SmileIcon style={{ marginRight: 8 }} />
             Ссылка
           </SidebarLink>
         </LinksGroup>

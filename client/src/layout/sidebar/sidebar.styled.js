@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { Colors } from 'bulian-ui';
 
 export const Container = styled.div`
   grid-area: sidebar;
-  box-shadow: var(--shadow-light);
+  box-shadow: ${Colors.shadowLightColor};
 
   display: grid;
   grid-template-columns: ${(props) => (props.isVisible ? '12rem' : '4rem')};
@@ -41,10 +42,10 @@ export const LinksGroup = styled.div`
 
 export const SidebarLink = styled.a`
   padding: 1rem;
-  color: var(--text-color);
+  color: ${Colors.textColor};
   cursor: pointer;
 
   :hover {
-    background-color: var(--secondary-color);
+    background-color: ${Colors.secondaryColor};
   }
 `;

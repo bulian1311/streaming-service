@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { useStore } from '../../hooks';
-import { Tag, Input } from '../../components';
+import { Tag, Input, Icons } from 'bulian-ui';
 
 import io from 'socket.io-client';
 
 import {
-  RightArrowIcon,
-  LeftArrowIcon,
-  UsersIcon,
-  SmileIcon,
-} from '../../icons';
-import { Container, ChatHeader, ChatBody, ChatFooter, StyledMessage } from './';
+  Container,
+  ChatHeader,
+  ChatBody,
+  ChatFooter,
+  StyledMessage,
+} from './chat.styled';
 
 let socket;
 
@@ -30,32 +30,31 @@ export const Chat = observer(() => {
     socket = io('localhost:8080', { withCredentials: true });
 
     socket.emit('join', { username, roomId }, (err) => {
-      if(err) {
+      if (err) {
         alert(err.message);
       }
     });
 
     return () => {
-      socket.emit('disconect', {username, roomId});
+      socket.emit('disconect', { username, roomId });
       socket.off();
     };
-    
   }, []);
 
   useEffect(() => {
     console.log('qqqq');
-    socket.on('message', message => {
-      setMessages(messages => [ ...messages, message ]);
+    socket.on('message', (message) => {
+      setMessages((messages) => [...messages, message]);
     });
-    
-    socket.on("roomData", ({ users }) => {
+
+    socket.on('roomData', ({ users }) => {
       setUsers(users);
     });
-}, []);
+  }, []);
 
   const handleKeyPress = (e) => {
     if (message && e.key === 'Enter') {
-      socket.emit('message', {username, message, roomId});
+      socket.emit('message', { username, message, roomId });
       setMessage('');
     }
   };
@@ -65,15 +64,13 @@ export const Chat = observer(() => {
       <StyledMessage key={i}>
         {username}: {message}
       </StyledMessage>
-    ))
+    ));
   };
 
   const renderUsers = () => {
     return users.map((username) => (
-      <StyledMessage key={username}>
-        {username}
-      </StyledMessage>
-    ))
+      <StyledMessage key={username}>{username}</StyledMessage>
+    ));
   };
 
   return (
@@ -81,17 +78,21 @@ export const Chat = observer(() => {
       {isVisible ? (
         <ChatHeader>
           <Tag title="свернуть" onClick={() => setIsVisible(false)}>
-            <RightArrowIcon />
+            <Icons.RightArrowIcon />
           </Tag>
           <h4>Чат трансляции</h4>
-          <Tag title="пользователи чата" isActive={isRoomInfo} onClick={() => setIsRoomInfo(!isRoomInfo)}>
-            <UsersIcon />
+          <Tag
+            title="пользователи чата"
+            isActive={isRoomInfo}
+            onClick={() => setIsRoomInfo(!isRoomInfo)}
+          >
+            <Icons.UsersIcon />
           </Tag>
         </ChatHeader>
       ) : (
         <ChatHeader>
           <Tag title="развернуть" onClick={() => setIsVisible(true)}>
-            <LeftArrowIcon />
+            <Icons.LeftArrowIcon />
           </Tag>
         </ChatHeader>
       )}
@@ -101,7 +102,7 @@ export const Chat = observer(() => {
       </ChatBody>
       <ChatFooter isVisible={isVisible}>
         <Tag title="смайлики" style={{ marginRight: '0.5rem' }}>
-          <SmileIcon />
+          <Icons.SmileIcon />
         </Tag>
         <Input
           value={message}

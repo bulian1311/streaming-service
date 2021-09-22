@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
+import { Button, Icons } from 'bulian-ui';
 import { useStore } from '../../hooks';
 
 import { Search } from '../search';
-import { Button, NavLink, Logo } from '../../components';
-import { SettingsIcon, LogoutIcon, LoginIcon } from '../../icons';
+import { NavLink, Logo } from '../../components';
 
 import {
   Container,
@@ -17,7 +17,7 @@ import {
   UserSettingsLink,
   UserInfo,
   LinksGroup,
-} from './';
+} from './navbar.styled';
 
 export const Navbar = observer(() => {
   const { userStore } = useStore();
@@ -58,11 +58,11 @@ export const Navbar = observer(() => {
               </UserInfo>
               <LinksGroup>
                 <UserSettingsLink>
-                  <SettingsIcon style={{ marginRight: '0.6rem' }} />
+                  <Icons.SettingsIcon style={{ marginRight: '0.6rem' }} />
                   Настройки
                 </UserSettingsLink>
                 <UserSettingsLink onClick={logout}>
-                  <LogoutIcon style={{ marginRight: '0.6rem' }} />
+                  <Icons.LogoutIcon style={{ marginRight: '0.6rem' }} />
                   Выход
                 </UserSettingsLink>
               </LinksGroup>
@@ -70,7 +70,7 @@ export const Navbar = observer(() => {
           </UserContainer>
         ) : (
           <Button onClick={() => userStore.setIsFormVisible(true)} primary>
-            <LoginIcon style={{ marginRight: '0.6rem' }} />
+            <Icons.LoginIcon style={{ marginRight: '0.6rem' }} />
             Авторизация
           </Button>
         )}

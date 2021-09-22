@@ -6,7 +6,7 @@ import { Body } from './body';
 import { Chat } from './chat';
 import { Auth } from './auth';
 
-import { Container } from './';
+import { Container } from './layout.styled';
 
 export const Layout = ({ children }) => {
   return (

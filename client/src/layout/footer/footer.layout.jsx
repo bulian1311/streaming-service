@@ -1,7 +1,7 @@
 import React from 'react';
 
 //import { Logo, NavLink } from "../../components";
-import { Container } from './';
+import { Container } from './footer.styled';
 
 export const Footer = () => {
   return (

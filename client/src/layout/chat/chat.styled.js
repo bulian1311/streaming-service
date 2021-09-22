@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { Colors } from 'bulian-ui';
 
 export const Container = styled.div`
   grid-area: chat;
   height: calc(100vh - 4rem);
-  box-shadow: var(--shadow-light);
+  box-shadow: ${Colors.shadowLightColor};
 
   display: grid;
   grid-template-columns: ${(props) => (props.isVisible ? '20rem' : '4rem')};

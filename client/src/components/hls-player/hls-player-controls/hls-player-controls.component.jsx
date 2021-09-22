@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-import { Tag } from '../../';
-import { VolumeIcon, MuteIcon, FullScreenIcon } from '../../../icons';
+import { Tag, Icons } from 'bulian-ui';
 import { StyledControls, StyledRange } from './hls-player-controls.styled';
 
 export const HlsPlayerControls = ({
@@ -40,10 +39,10 @@ export const HlsPlayerControls = ({
         />
       </Tag>
       <Tag onClick={handleMuteIcon} style={{ margin: '0 1rem' }}>
-        {isMute ? <MuteIcon /> : <VolumeIcon />}
+        {isMute ? <Icons.MuteIcon /> : <Icons.VolumeIcon />}
       </Tag>
       <Tag>
-        <FullScreenIcon onClick={handleFullScreen} />
+        <Icons.FullScreenIcon onClick={handleFullScreen} />
       </Tag>
     </StyledControls>
   );
