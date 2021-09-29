@@ -53,8 +53,8 @@ services:
     restart: unless-stopped
     depends_on:
       - mongo
-    # ports:
-    #   - 4000:4000
+    ports:
+      - 4000:4000
     environment:
       - PORT=4000
       # - API_URL=http://localhost:4001
